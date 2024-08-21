@@ -1,8 +1,8 @@
 package com.marcinchowaniec.dto;
 
-public record RepsoitoriesDTO(String node_id,
+public record UserReposDTO(String node_id,
         String name,
         String url,
-        String owner) {
+        String full_name) {
 
 }

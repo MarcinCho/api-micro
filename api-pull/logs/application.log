@@ -1,9 +1,0 @@
-2024-08-19 19:25:42,607 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[50915] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 0.603s. Listening on: http://localhost:8080
-2024-08-19 19:25:42,608 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[50915] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2024-08-19 19:25:42,610 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[50915] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
-2024-08-19 19:25:42,611 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[50915] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload total time: 0.700s 
-2024-08-19 19:25:49,551 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[50915] INFO  [com.mar.ser.RepoOwnerService] (executor-thread-1) Checkin if -> kali exist in DB
-2024-08-19 19:25:49,657 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[50915] INFO  [com.mar.ser.RepoOwnerService] (executor-thread-1) Pulling -> kali from internal DB
-2024-08-19 19:43:56,061 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[50915] INFO  [com.mar.ser.RepoOwnerService] (executor-thread-1) Checkin if -> kali exist in DB
-2024-08-19 19:43:56,160 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[50915] INFO  [com.mar.ser.RepoOwnerService] (executor-thread-1) Pulling -> kali from internal DB
-2024-08-19 19:55:17,718 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[50915] INFO  [io.quarkus] (Shutdown thread) api-pull stopped in 0.013s

@@ -7,14 +7,17 @@ quarkus:
       url: jdbc:postgresql://192.168.33.15:5434/apipull
   hibernate-orm:
     database:
-      generation: update
+#      generation: update
+      generation: drop-and-create
     log:
       sql: true
   log:
+    level: INFO
     console:
       enable: true
-      json:
-        pretty-print: true
+      # json:
+      #   pretty-print: true
     file:
       enable: true
-      path: logs/application.log
+      path: logs/a.log
+      level: DEBUG

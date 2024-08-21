@@ -3,9 +3,10 @@ package com.marcinchowaniec.controller;
 import java.util.List;
 import java.util.Optional;
 
-import com.marcinchowaniec.dto.RepsoitoriesDTO;
-import com.marcinchowaniec.entity.RepoOwner;
-import com.marcinchowaniec.htpClient.GithubHttpClient;
+import com.marcinchowaniec.dto.UserReposDTO;
+import com.marcinchowaniec.entity.GithubUser;
+import com.marcinchowaniec.entity.UserRepo;
+import com.marcinchowaniec.httpClient.GithubHttpClient;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -29,14 +30,14 @@ public class GithubApi {
     @GET
     @Path("/{username}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Optional<RepoOwner> getUsernameResponse(@PathParam("username") String username) {
+    public Optional<GithubUser> getUsernameResponse(@PathParam("username") String username) {
         return githubHttpClient.getGithubUser(username);
     }
 
     @GET
     @Path("/repos/{username}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<RepsoitoriesDTO> getUsernameRepos(@PathParam("username") String username) {
-        return null;
+    public Optional<List<UserRepo>> getUsernameRepos(@PathParam("username") String username) {
+        return githubHttpClient.getUserRepos(username);
     }
 }
