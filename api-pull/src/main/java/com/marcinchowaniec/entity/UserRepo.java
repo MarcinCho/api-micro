@@ -13,7 +13,7 @@ import jakarta.persistence.ManyToOne;
 public class UserRepo extends PanacheEntity {
 
     @ManyToOne
-    @JoinColumn(name = "user_repo_id", referencedColumnName = "userId", nullable = true)
+    @JoinColumn(name = "user_login", referencedColumnName = "login")
     public GithubUser owner;
     public String name;
     public String url;

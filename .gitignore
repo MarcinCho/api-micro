@@ -1,1 +1,5 @@
 api-pull/src/main/resources/application.properties
+
+/.idea
+/.vscode
+todo.md
