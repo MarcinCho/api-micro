@@ -16,8 +16,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.marcinchowaniec.entity.GithubUser;
-import com.marcinchowaniec.entity.UserRepo;
+import com.marcinchowaniec.entity.User;
+import com.marcinchowaniec.entity.Repo;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
@@ -29,7 +29,7 @@ public class GithubHttpClient {
     private static final Logger logger = LoggerFactory.getLogger(GithubHttpClient.class);
 
     @Transactional
-    public Optional<GithubUser> getGithubUser(String username) {
+    public Optional<User> getGithubUser(String username) {
         System.out.println("Wanting to grab " + username);
         String url = String.format("https://api.github.com/users/%s", username);
 
@@ -37,11 +37,11 @@ public class GithubHttpClient {
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-            // System.out.println(response.body());
+            logger.info("Pulling " + username + " from github");
             ObjectMapper ObjectMapper = new ObjectMapper().configure(
                     DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
-            GithubUser repoOwner = ObjectMapper.readValue(response.body(), GithubUser.class);
+            User repoOwner = ObjectMapper.readValue(response.body(), User.class);
             return Optional.of(repoOwner);
         } catch (IOException | InterruptedException e) {
             System.err.println("Are we catching this ??? " + e.getMessage());
@@ -52,7 +52,7 @@ public class GithubHttpClient {
         }
     }
 
-    public List<UserRepo> getReposDto(String username) {
+    public List<Repo> getReposDto(String username) {
         logger.info("Pulling repositories as DTOs from Github " + username + " account");
         String url = String.format("https://api.github.com/users/%s/repos", username);
         HttpClient client = HttpClient.newBuilder().build();
@@ -61,7 +61,7 @@ public class GithubHttpClient {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
-            List<UserRepo> userRepos = mapper.readValue(response.body(), new TypeReference<List<UserRepo>>() {
+            List<Repo> userRepos = mapper.readValue(response.body(), new TypeReference<List<Repo>>() {
             });
             return userRepos;
         } catch (IOException | InterruptedException e) {
@@ -73,7 +73,7 @@ public class GithubHttpClient {
         }
     }
 
-    public List<UserRepo> getReposFromApi(String username) {
+    public List<Repo> getReposFromApi(String username) {
         logger.info("Pulling repositories as DTOs from Github " + username + " account");
         String url = String.format("https://api.github.com/users/%s/repos", username);
         HttpClient client = HttpClient.newBuilder().build();
@@ -82,7 +82,7 @@ public class GithubHttpClient {
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
-            List<UserRepo> userRepos = mapper.readValue(response.body(), new TypeReference<List<UserRepo>>() {
+            List<Repo> userRepos = mapper.readValue(response.body(), new TypeReference<List<Repo>>() {
             });
             return userRepos;
         } catch (IOException | InterruptedException e) {

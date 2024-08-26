@@ -1,7 +1,79 @@
-2024-08-23 14:01:57,461 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[751944] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 3.991s. Listening on: http://localhost:8080
-2024-08-23 14:01:57,467 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[751944] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2024-08-23 14:01:57,469 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[751944] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
-2024-08-23 14:02:00,259 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[751944] INFO  [com.mar.ser.GithubUserService] (executor-thread-1) Pulling -> marcincho from internal DB
-2024-08-23 14:02:01,174 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[751944] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling repositories as DTOs from Github marcincho account
-2024-08-23 14:02:01,578 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[751944] INFO  [com.mar.ser.GithubUserService] (executor-thread-1) Saving marcincho to internal DB.
-2024-08-23 14:05:00,036 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[751944] INFO  [io.quarkus] (Quarkus Main Thread) api-pull stopped in 0.038s
+2024-08-26 22:14:05,926 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 0.536s. Listening on: http://localhost:8080
+2024-08-26 22:14:05,927 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2024-08-26 22:14:05,928 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
+2024-08-26 22:14:05,928 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-25) Live reload total time: 0.605s 
+2024-08-26 22:14:05,933 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) User POST method invoked.
+2024-08-26 22:14:05,939 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Checkin if -> dwdwdwdaca exist in DB
+2024-08-26 22:14:05,950 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Pulling -> dwdwdwdaca from Github
+2024-08-26 22:14:06,134 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling dwdwdwdaca from github
+2024-08-26 22:14:06,139 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Saving null to internal DB.
+2024-08-26 22:14:06,142 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /user/ failed, error id: 50732475-6648-4d27-ae24-f0a00aa7321e-10: org.hibernate.id.IdentifierGenerationException: Identifier of entity 'com.marcinchowaniec.entity.User' must be manually assigned before calling 'persist()'
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:209)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultMergeEventListener.saveTransientEntity(DefaultMergeEventListener.java:379)
+	at org.hibernate.event.internal.DefaultMergeEventListener.entityIsTransient(DefaultMergeEventListener.java:299)
+	at org.hibernate.event.internal.DefaultMergeEventListener.merge(DefaultMergeEventListener.java:213)
+	at org.hibernate.event.internal.DefaultMergeEventListener.doMerge(DefaultMergeEventListener.java:148)
+	at org.hibernate.event.internal.DefaultMergeEventListener.onMerge(DefaultMergeEventListener.java:128)
+	at org.hibernate.event.internal.DefaultMergeEventListener.onMerge(DefaultMergeEventListener.java:86)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.fireMerge(SessionImpl.java:850)
+	at org.hibernate.internal.SessionImpl.merge(SessionImpl.java:836)
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.merge(TransactionScopedSession.java:157)
+	at org.hibernate.engine.spi.SessionLazyDelegator.merge(SessionLazyDelegator.java:272)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.merge(Unknown Source)
+	at com.marcinchowaniec.service.UserService.saveUser(UserService.java:30)
+	at com.marcinchowaniec.service.UserService_Subclass.saveUser$$superforward(Unknown Source)
+	at com.marcinchowaniec.service.UserService_Subclass$$function$$14.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:73)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:136)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:107)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.doIntercept(TransactionalInterceptorRequired.java:38)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.intercept(TransactionalInterceptorBase.java:61)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.intercept(TransactionalInterceptorRequired.java:32)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
+	at com.marcinchowaniec.service.UserService_Subclass.saveUser(Unknown Source)
+	at com.marcinchowaniec.service.UserService.getUserByLogin(UserService.java:41)
+	at com.marcinchowaniec.service.UserService_ClientProxy.getUserByLogin(Unknown Source)
+	at com.marcinchowaniec.controller.UserController.postUser(UserController.java:55)
+	at com.marcinchowaniec.controller.UserController$quarkusrestinvoker$postUser_1b927a9eb7c0fda07a956fe1c41e2b52148548a2.invoke(Unknown Source)
+	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-26 22:14:38,606 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) User POST method invoked.
+2024-08-26 22:14:38,606 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Checkin if -> marcincho exist in DB
+2024-08-26 22:14:38,690 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Pulling -> marcincho from Github
+2024-08-26 22:14:38,933 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling marcincho from github
+2024-08-26 22:14:38,935 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Saving marcincho to internal DB.
+2024-08-26 22:14:45,680 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo GET method invoked.
+2024-08-26 22:14:45,682 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Checking if user marcincho has any repos in internal DB
+2024-08-26 22:14:45,741 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling repositories as DTOs from Github marcincho account
+2024-08-26 22:14:46,181 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving api-micro to internal db
+2024-08-26 22:14:46,264 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving api-pull to internal db
+2024-08-26 22:14:46,281 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving bookbot to internal db
+2024-08-26 22:14:46,298 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving build-it-config to internal db
+2024-08-26 22:14:46,316 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving cicd-start to internal db
+2024-08-26 22:14:46,339 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving GH_api to internal db
+2024-08-26 22:14:46,356 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving JPlan to internal db
+2024-08-26 22:14:46,367 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match to internal db
+2024-08-26 22:14:46,378 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Client to internal db
+2024-08-26 22:14:46,387 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Config_Serwer to internal db
+2024-08-26 22:14:46,400 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Payments to internal db
+2024-08-26 22:14:46,412 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Projects to internal db
+2024-08-26 22:14:46,422 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Users to internal db
+2024-08-26 22:14:46,430 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving TennisThesis to internal db
+2024-08-26 22:14:46,440 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving webflyx to internal db
+2024-08-26 22:16:37,257 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Shutdown thread) api-pull stopped in 0.009s

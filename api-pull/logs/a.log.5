@@ -1,16 +1,69 @@
-2024-08-23 13:49:55,488 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[742043] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 0.766s. Listening on: http://localhost:8080
-2024-08-23 13:49:55,490 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[742043] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2024-08-23 13:49:55,491 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[742043] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
-2024-08-23 13:49:55,491 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[742043] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload total time: 1.506s 
-2024-08-23 13:50:03,367 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[742043] INFO  [com.mar.ser.GithubUserService] (executor-thread-1) Pulling -> marcincho from internal DB
-2024-08-23 13:50:03,731 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[742043] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling repositories as DTOs from Github marcincho account
-2024-08-23 13:50:04,202 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[742043] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /gh/repo/marcincho failed, error id: 5f1d2eac-7ab9-4ef9-9c29-b93fb97ef6c5-2: java.lang.UnsupportedOperationException
-	at java.base/java.util.AbstractCollection.add(AbstractCollection.java:253)
-	at java.base/java.util.AbstractCollection.addAll(AbstractCollection.java:338)
-	at com.marcinchowaniec.service.GithubUserService.getRepoOwnerWithRepos(GithubUserService.java:67)
-	at com.marcinchowaniec.service.GithubUserService_ClientProxy.getRepoOwnerWithRepos(Unknown Source)
-	at com.marcinchowaniec.controller.GithubApi.getUserWithRepos(GithubApi.java:48)
-	at com.marcinchowaniec.controller.GithubApi$quarkusrestinvoker$getUserWithRepos_42acaf0150f3aa10065c1e8eff6e336cb2e3e837.invoke(Unknown Source)
+2024-08-26 20:35:42,786 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 0.578s. Listening on: http://localhost:8080
+2024-08-26 20:35:42,786 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2024-08-26 20:35:42,787 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
+2024-08-26 20:35:42,787 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload total time: 0.648s 
+2024-08-26 20:35:54,789 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Checking if user marcincho has any repos in internal DB
+2024-08-26 20:35:54,874 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling repositories as DTOs from Github marcincho account
+2024-08-26 20:35:55,322 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving api-micro to internal db
+2024-08-26 20:35:55,402 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving api-pull to internal db
+2024-08-26 20:35:55,415 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving bookbot to internal db
+2024-08-26 20:35:55,450 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving build-it-config to internal db
+2024-08-26 20:35:55,464 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving cicd-start to internal db
+2024-08-26 20:35:55,477 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving GH_api to internal db
+2024-08-26 20:35:55,487 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving JPlan to internal db
+2024-08-26 20:35:55,498 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match to internal db
+2024-08-26 20:35:55,511 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Client to internal db
+2024-08-26 20:35:55,524 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Config_Serwer to internal db
+2024-08-26 20:35:55,536 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Payments to internal db
+2024-08-26 20:35:55,547 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Projects to internal db
+2024-08-26 20:35:55,558 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Users to internal db
+2024-08-26 20:35:55,574 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving TennisThesis to internal db
+2024-08-26 20:35:55,585 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving webflyx to internal db
+2024-08-26 20:36:00,090 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving api-microwithout username
+2024-08-26 20:36:00,096 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /repo/ failed, error id: 50732475-6648-4d27-ae24-f0a00aa7321e-6: jakarta.persistence.EntityExistsException: A different object with the same identifier value was already associated with the session : [com.marcinchowaniec.entity.Repo#843547374]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:126)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:167)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:173)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:763)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:146)
+	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
+	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
+	at io.quarkus.hibernate.orm.panache.PanacheRepositoryBase.persist(PanacheRepositoryBase.java:66)
+	at com.marcinchowaniec.repository.RepoRepository_ClientProxy.persist(Unknown Source)
+	at com.marcinchowaniec.service.RepoService.saveUserRepo(RepoService.java:44)
+	at com.marcinchowaniec.service.RepoService_Subclass.saveUserRepo$$superforward(Unknown Source)
+	at com.marcinchowaniec.service.RepoService_Subclass$$function$$41.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:73)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInCallerTx(TransactionalInterceptorBase.java:335)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.doIntercept(TransactionalInterceptorRequired.java:40)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.intercept(TransactionalInterceptorBase.java:61)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.intercept(TransactionalInterceptorRequired.java:32)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
+	at com.marcinchowaniec.service.RepoService_Subclass.saveUserRepo(Unknown Source)
+	at com.marcinchowaniec.service.RepoService_ClientProxy.saveUserRepo(Unknown Source)
+	at com.marcinchowaniec.controller.RepoController.updateSingleRepo(RepoController.java:109)
+	at com.marcinchowaniec.controller.RepoController_Subclass.updateSingleRepo$$superforward(Unknown Source)
+	at com.marcinchowaniec.controller.RepoController_Subclass$$function$$5.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:73)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:136)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:107)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.doIntercept(TransactionalInterceptorRequired.java:38)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.intercept(TransactionalInterceptorBase.java:61)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.intercept(TransactionalInterceptorRequired.java:32)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
+	at com.marcinchowaniec.controller.RepoController_Subclass.updateSingleRepo(Unknown Source)
+	at com.marcinchowaniec.controller.RepoController$quarkusrestinvoker$updateSingleRepo_e7aee7a22e8657c99c312696556ed34962d9fbef.invoke(Unknown Source)
 	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
 	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
 	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
@@ -22,5 +75,17 @@
 	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.hibernate.NonUniqueObjectException: A different object with the same identifier value was already associated with the session : [com.marcinchowaniec.entity.Repo#843547374]
+	at org.hibernate.event.internal.AbstractSaveEventListener.entityKey(AbstractSaveEventListener.java:237)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:219)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
+	... 50 more
 
-2024-08-23 13:52:52,174 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[742043] INFO  [io.quarkus] (Shutdown thread) api-pull stopped in 0.012s
+2024-08-26 20:40:49,606 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Restarting quarkus due to changes in RepoService.class, RepoController.class.
+2024-08-26 20:40:49,610 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) api-pull stopped in 0.003s

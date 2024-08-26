@@ -1,25 +1,26 @@
-2024-08-23 13:55:24,322 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[747521] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 4.068s. Listening on: http://localhost:8080
-2024-08-23 13:55:24,325 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[747521] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2024-08-23 13:55:24,326 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[747521] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
-2024-08-23 13:55:27,087 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[747521] INFO  [com.mar.ser.GithubUserService] (executor-thread-1) Pulling -> marcincho from internal DB
-2024-08-23 13:55:28,178 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[747521] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling repositories as DTOs from Github marcincho account
-2024-08-23 13:55:28,668 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[747521] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /gh/repo/marcincho failed, error id: 5dd0a86e-90da-4cde-a59e-206781b97c4a-1: java.lang.UnsupportedOperationException
-	at java.base/java.util.AbstractCollection.add(AbstractCollection.java:253)
-	at java.base/java.util.AbstractCollection.addAll(AbstractCollection.java:338)
-	at com.marcinchowaniec.service.GithubUserService.getRepoOwnerWithRepos(GithubUserService.java:62)
-	at com.marcinchowaniec.service.GithubUserService_ClientProxy.getRepoOwnerWithRepos(Unknown Source)
-	at com.marcinchowaniec.controller.GithubApi.getUserWithRepos(GithubApi.java:48)
-	at com.marcinchowaniec.controller.GithubApi$quarkusrestinvoker$getUserWithRepos_31cf390ed7cb3c1034cc1236d6c247c6e518bbd2.invoke(Unknown Source)
-	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
-	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
-	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
-	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
-	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
-	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
-	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
-	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
-	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-
-2024-08-23 13:58:15,752 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[747521] INFO  [io.quarkus] (Shutdown thread) api-pull stopped in 0.020s
+2024-08-26 22:09:08,975 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 0.574s. Listening on: http://localhost:8080
+2024-08-26 22:09:08,976 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2024-08-26 22:09:08,977 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
+2024-08-26 22:09:08,977 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload total time: 0.735s 
+2024-08-26 22:09:21,616 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo GET method invoked.
+2024-08-26 22:09:21,619 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Checking if user marcincho has any repos in internal DB
+2024-08-26 22:09:21,748 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling repositories as DTOs from Github marcincho account
+2024-08-26 22:09:22,208 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving api-micro to internal db
+2024-08-26 22:09:22,273 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving api-pull to internal db
+2024-08-26 22:09:22,284 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving bookbot to internal db
+2024-08-26 22:09:22,295 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving build-it-config to internal db
+2024-08-26 22:09:22,306 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving cicd-start to internal db
+2024-08-26 22:09:22,316 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving GH_api to internal db
+2024-08-26 22:09:22,327 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving JPlan to internal db
+2024-08-26 22:09:22,337 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match to internal db
+2024-08-26 22:09:22,348 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Client to internal db
+2024-08-26 22:09:22,364 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Config_Serwer to internal db
+2024-08-26 22:09:22,374 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Payments to internal db
+2024-08-26 22:09:22,382 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Projects to internal db
+2024-08-26 22:09:22,391 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving Service_Match_Users to internal db
+2024-08-26 22:09:22,400 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving TennisThesis to internal db
+2024-08-26 22:09:22,411 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving webflyx to internal db
+2024-08-26 22:09:44,804 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo PUT method invoked.
+2024-08-26 22:09:44,890 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) Saving api-microwithout username
+2024-08-26 22:12:37,153 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-21) Restarting quarkus due to changes in UserController.class, RepoService.class.
+2024-08-26 22:12:37,159 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) api-pull stopped in 0.004s

@@ -1,16 +1,46 @@
-2024-08-23 13:58:33,965 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[749691] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 3.983s. Listening on: http://localhost:8080
-2024-08-23 13:58:33,968 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[749691] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2024-08-23 13:58:33,969 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[749691] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
-2024-08-23 13:58:37,898 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[749691] INFO  [com.mar.ser.GithubUserService] (executor-thread-1) Pulling -> marcincho from internal DB
-2024-08-23 13:58:56,314 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[749691] INFO  [com.mar.ser.GithubUserService] (executor-thread-1) Pulling -> marcincho from internal DB
-2024-08-23 13:58:56,471 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[749691] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling repositories as DTOs from Github marcincho account
-2024-08-23 13:58:56,916 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[749691] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /gh/repo/marcincho failed, error id: a265ffae-87c3-4b1a-8428-55d7a43f9ccb-1: java.lang.UnsupportedOperationException
-	at java.base/java.util.AbstractCollection.add(AbstractCollection.java:253)
-	at java.base/java.util.AbstractCollection.addAll(AbstractCollection.java:338)
-	at com.marcinchowaniec.service.GithubUserService.getRepoOwnerWithRepos(GithubUserService.java:62)
-	at com.marcinchowaniec.service.GithubUserService_ClientProxy.getRepoOwnerWithRepos(Unknown Source)
-	at com.marcinchowaniec.controller.GithubApi.getUserWithRepos(GithubApi.java:48)
-	at com.marcinchowaniec.controller.GithubApi$quarkusrestinvoker$getUserWithRepos_31cf390ed7cb3c1034cc1236d6c247c6e518bbd2.invoke(Unknown Source)
+2024-08-26 22:12:37,745 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 0.584s. Listening on: http://localhost:8080
+2024-08-26 22:12:37,746 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2024-08-26 22:12:37,746 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
+2024-08-26 22:12:37,747 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-21) Live reload total time: 0.688s 
+2024-08-26 22:12:37,763 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) User POST method invoked.
+2024-08-26 22:12:37,767 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Checkin if -> dwdwdwdaca exist in DB
+2024-08-26 22:12:37,778 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Pulling -> dwdwdwdaca from Github
+2024-08-26 22:12:38,023 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling dwdwdwdaca from github
+2024-08-26 22:12:38,026 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Saving null to internal DB.
+2024-08-26 22:12:38,028 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /user/ failed, error id: 50732475-6648-4d27-ae24-f0a00aa7321e-7: org.hibernate.id.IdentifierGenerationException: Identifier of entity 'com.marcinchowaniec.entity.User' must be manually assigned before calling 'persist()'
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:209)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultMergeEventListener.saveTransientEntity(DefaultMergeEventListener.java:379)
+	at org.hibernate.event.internal.DefaultMergeEventListener.entityIsTransient(DefaultMergeEventListener.java:299)
+	at org.hibernate.event.internal.DefaultMergeEventListener.merge(DefaultMergeEventListener.java:213)
+	at org.hibernate.event.internal.DefaultMergeEventListener.doMerge(DefaultMergeEventListener.java:148)
+	at org.hibernate.event.internal.DefaultMergeEventListener.onMerge(DefaultMergeEventListener.java:128)
+	at org.hibernate.event.internal.DefaultMergeEventListener.onMerge(DefaultMergeEventListener.java:86)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.fireMerge(SessionImpl.java:850)
+	at org.hibernate.internal.SessionImpl.merge(SessionImpl.java:836)
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.merge(TransactionScopedSession.java:157)
+	at org.hibernate.engine.spi.SessionLazyDelegator.merge(SessionLazyDelegator.java:272)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.merge(Unknown Source)
+	at com.marcinchowaniec.service.UserService.saveUser(UserService.java:30)
+	at com.marcinchowaniec.service.UserService_Subclass.saveUser$$superforward(Unknown Source)
+	at com.marcinchowaniec.service.UserService_Subclass$$function$$12.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:73)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:136)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:107)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.doIntercept(TransactionalInterceptorRequired.java:38)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.intercept(TransactionalInterceptorBase.java:61)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.intercept(TransactionalInterceptorRequired.java:32)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
+	at com.marcinchowaniec.service.UserService_Subclass.saveUser(Unknown Source)
+	at com.marcinchowaniec.service.UserService.getUserByLogin(UserService.java:41)
+	at com.marcinchowaniec.service.UserService_ClientProxy.getUserByLogin(Unknown Source)
+	at com.marcinchowaniec.controller.UserController.postUser(UserController.java:55)
+	at com.marcinchowaniec.controller.UserController$quarkusrestinvoker$postUser_1b927a9eb7c0fda07a956fe1c41e2b52148548a2.invoke(Unknown Source)
 	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
 	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
 	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
@@ -23,5 +53,107 @@
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
 
-2024-08-23 14:01:38,309 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[749691] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Restarting quarkus due to changes in GithubUserService.class, GithubHttpClient$1.class, GithubHttpClient.class, GithubApi.class, GithubHttpClient$2.class, GithubUserDTO.class, UserRepoDTO.class, UserRepoMapper.class, GithubUserMapper.class.
-2024-08-23 14:01:38,324 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[749691] INFO  [io.quarkus] (Quarkus Main Thread) api-pull stopped in 0.013s
+2024-08-26 22:13:38,362 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) User POST method invoked.
+2024-08-26 22:13:38,363 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Checkin if -> dwdwdwdaca exist in DB
+2024-08-26 22:13:38,466 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Pulling -> dwdwdwdaca from Github
+2024-08-26 22:13:38,726 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling dwdwdwdaca from github
+2024-08-26 22:13:38,728 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Saving null to internal DB.
+2024-08-26 22:13:38,730 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /user/ failed, error id: 50732475-6648-4d27-ae24-f0a00aa7321e-8: org.hibernate.id.IdentifierGenerationException: Identifier of entity 'com.marcinchowaniec.entity.User' must be manually assigned before calling 'persist()'
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:209)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultMergeEventListener.saveTransientEntity(DefaultMergeEventListener.java:379)
+	at org.hibernate.event.internal.DefaultMergeEventListener.entityIsTransient(DefaultMergeEventListener.java:299)
+	at org.hibernate.event.internal.DefaultMergeEventListener.merge(DefaultMergeEventListener.java:213)
+	at org.hibernate.event.internal.DefaultMergeEventListener.doMerge(DefaultMergeEventListener.java:148)
+	at org.hibernate.event.internal.DefaultMergeEventListener.onMerge(DefaultMergeEventListener.java:128)
+	at org.hibernate.event.internal.DefaultMergeEventListener.onMerge(DefaultMergeEventListener.java:86)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.fireMerge(SessionImpl.java:850)
+	at org.hibernate.internal.SessionImpl.merge(SessionImpl.java:836)
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.merge(TransactionScopedSession.java:157)
+	at org.hibernate.engine.spi.SessionLazyDelegator.merge(SessionLazyDelegator.java:272)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.merge(Unknown Source)
+	at com.marcinchowaniec.service.UserService.saveUser(UserService.java:30)
+	at com.marcinchowaniec.service.UserService_Subclass.saveUser$$superforward(Unknown Source)
+	at com.marcinchowaniec.service.UserService_Subclass$$function$$12.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:73)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:136)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:107)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.doIntercept(TransactionalInterceptorRequired.java:38)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.intercept(TransactionalInterceptorBase.java:61)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.intercept(TransactionalInterceptorRequired.java:32)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
+	at com.marcinchowaniec.service.UserService_Subclass.saveUser(Unknown Source)
+	at com.marcinchowaniec.service.UserService.getUserByLogin(UserService.java:41)
+	at com.marcinchowaniec.service.UserService_ClientProxy.getUserByLogin(Unknown Source)
+	at com.marcinchowaniec.controller.UserController.postUser(UserController.java:55)
+	at com.marcinchowaniec.controller.UserController$quarkusrestinvoker$postUser_1b927a9eb7c0fda07a956fe1c41e2b52148548a2.invoke(Unknown Source)
+	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-26 22:13:39,899 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.RepoService] (executor-thread-1) User POST method invoked.
+2024-08-26 22:13:39,900 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Checkin if -> dwdwdwdaca exist in DB
+2024-08-26 22:13:40,000 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Pulling -> dwdwdwdaca from Github
+2024-08-26 22:13:40,083 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling dwdwdwdaca from github
+2024-08-26 22:13:40,086 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [com.mar.ser.UserService] (executor-thread-1) Saving null to internal DB.
+2024-08-26 22:13:40,087 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /user/ failed, error id: 50732475-6648-4d27-ae24-f0a00aa7321e-9: org.hibernate.id.IdentifierGenerationException: Identifier of entity 'com.marcinchowaniec.entity.User' must be manually assigned before calling 'persist()'
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:209)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137)
+	at org.hibernate.event.internal.DefaultMergeEventListener.saveTransientEntity(DefaultMergeEventListener.java:379)
+	at org.hibernate.event.internal.DefaultMergeEventListener.entityIsTransient(DefaultMergeEventListener.java:299)
+	at org.hibernate.event.internal.DefaultMergeEventListener.merge(DefaultMergeEventListener.java:213)
+	at org.hibernate.event.internal.DefaultMergeEventListener.doMerge(DefaultMergeEventListener.java:148)
+	at org.hibernate.event.internal.DefaultMergeEventListener.onMerge(DefaultMergeEventListener.java:128)
+	at org.hibernate.event.internal.DefaultMergeEventListener.onMerge(DefaultMergeEventListener.java:86)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.fireMerge(SessionImpl.java:850)
+	at org.hibernate.internal.SessionImpl.merge(SessionImpl.java:836)
+	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.merge(TransactionScopedSession.java:157)
+	at org.hibernate.engine.spi.SessionLazyDelegator.merge(SessionLazyDelegator.java:272)
+	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.merge(Unknown Source)
+	at com.marcinchowaniec.service.UserService.saveUser(UserService.java:30)
+	at com.marcinchowaniec.service.UserService_Subclass.saveUser$$superforward(Unknown Source)
+	at com.marcinchowaniec.service.UserService_Subclass$$function$$12.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:73)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:136)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:107)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.doIntercept(TransactionalInterceptorRequired.java:38)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.intercept(TransactionalInterceptorBase.java:61)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.intercept(TransactionalInterceptorRequired.java:32)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
+	at com.marcinchowaniec.service.UserService_Subclass.saveUser(Unknown Source)
+	at com.marcinchowaniec.service.UserService.getUserByLogin(UserService.java:41)
+	at com.marcinchowaniec.service.UserService_ClientProxy.getUserByLogin(Unknown Source)
+	at com.marcinchowaniec.controller.UserController.postUser(UserController.java:55)
+	at com.marcinchowaniec.controller.UserController$quarkusrestinvoker$postUser_1b927a9eb7c0fda07a956fe1c41e2b52148548a2.invoke(Unknown Source)
+	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-26 22:13:55,357 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Restarting as requested by the user.
+2024-08-26 22:13:55,367 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[972246] INFO  [io.quarkus] (Quarkus Main Thread) api-pull stopped in 0.007s
