@@ -6,7 +6,7 @@ import com.marcinchowaniec.entity.User;
 public class UserMapper {
 
     public static User mapToUser(UserDto userDto) {
-        User user = new User();
+        var user = new User();
         user.name = userDto.name();
         user.login = userDto.login();
         user.url = "https://api.github.com/users/" + userDto.login();

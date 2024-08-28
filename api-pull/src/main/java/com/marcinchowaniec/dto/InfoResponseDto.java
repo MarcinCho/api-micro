@@ -3,7 +3,8 @@ package com.marcinchowaniec.dto;
 import java.util.Date;
 
 public record InfoResponseDto(
-        String info,
-        Date time) {
+                int status_code,
+                String info,
+                Date time) {
 
 }

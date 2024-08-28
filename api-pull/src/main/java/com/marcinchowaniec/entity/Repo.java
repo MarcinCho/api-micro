@@ -4,7 +4,6 @@ import java.util.Date;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -17,7 +16,6 @@ public class Repo extends PanacheEntityBase {
     @Id
     public Long id;
     public String user_login;
-    @Column(unique = true)
     public String name;
     public String url;
     public Date created_at;

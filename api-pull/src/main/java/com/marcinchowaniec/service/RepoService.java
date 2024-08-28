@@ -7,12 +7,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.marcinchowaniec.entity.Repo;
+import com.marcinchowaniec.exceptions.UserNotFoundException;
 import com.marcinchowaniec.httpClient.GithubHttpClient;
 import com.marcinchowaniec.repository.RepoRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.NotFoundException;
 
 @ApplicationScoped
 public class RepoService {
@@ -44,15 +46,21 @@ public class RepoService {
         repoRepository.persist(userRepo);
     }
 
-    public List<Repo> listReposFromClient(String username) {
+    public List<Repo> listReposFromClient(String username) throws NotFoundException {
         logger.info("Checking if user " + username + " has any repos in internal DB");
-        List<Repo> repos = repoRepository.reposByLogin(username);
-        if (repos.isEmpty()) {
-            repos = githubHttpClient.getReposFromApi(username);
-            repos.forEach(repo -> saveUserRepo(repo, username));
-            return repos;
+        List<Repo> repos = repoRepository.reposByLogin(username).orElseThrow(NotFoundException::new);
+        try {
+            if (repos.isEmpty()) {
+                repos = githubHttpClient.getReposFromApi(username);
+                repos.forEach(repo -> saveUserRepo(repo, username));
+                return repos;
+            } else {
+                return repos;
+            }
+        } catch (UserNotFoundException e) {
+            // return Optional.of(new ArrayList<>());
+            throw new NotFoundException();
         }
-        return repos;
     }
 
     public Optional<Repo> singleRepo(String repoName) {

@@ -6,6 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.marcinchowaniec.entity.User;
 import com.marcinchowaniec.entity.Repo;
+import com.marcinchowaniec.exceptions.UserNotFoundException;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
@@ -38,7 +40,7 @@ public class GithubHttpClient {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             logger.info("Pulling " + username + " from github");
-            ObjectMapper ObjectMapper = new ObjectMapper().configure(
+            var ObjectMapper = new ObjectMapper().configure(
                     DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
             User repoOwner = ObjectMapper.readValue(response.body(), User.class);
@@ -52,13 +54,17 @@ public class GithubHttpClient {
         }
     }
 
-    public List<Repo> getReposDto(String username) {
+    public List<Repo> getReposDto(String username) throws UserNotFoundException {
         logger.info("Pulling repositories as DTOs from Github " + username + " account");
         String url = String.format("https://api.github.com/users/%s/repos", username);
         HttpClient client = HttpClient.newBuilder().build();
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            if (response.statusCode() == 404) {
+                logger.info("User not found in GH API " + username);
+                throw new UserNotFoundException("User not Found in Github api.");
+            }
             ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
             List<Repo> userRepos = mapper.readValue(response.body(), new TypeReference<List<Repo>>() {
@@ -70,16 +76,23 @@ public class GithubHttpClient {
         } catch (IllegalArgumentException e) {
             logger.error("Invalid username info : " + e.getMessage());
             return null;
+        } catch (UserNotFoundException e) {
+            logger.error("Invoking User not found : " + e.getMessage());
+            return null;
         }
     }
 
-    public List<Repo> getReposFromApi(String username) {
+    public List<Repo> getReposFromApi(String username) throws UserNotFoundException {
         logger.info("Pulling repositories as DTOs from Github " + username + " account");
         String url = String.format("https://api.github.com/users/%s/repos", username);
         HttpClient client = HttpClient.newBuilder().build();
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            if (response.statusCode() == 404) {
+                logger.info("User not found in GH API " + username);
+                throw new UserNotFoundException("User not Found in Github api.");
+            }
             ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
             List<Repo> userRepos = mapper.readValue(response.body(), new TypeReference<List<Repo>>() {
@@ -87,6 +100,7 @@ public class GithubHttpClient {
             return userRepos;
         } catch (IOException | InterruptedException e) {
             logger.error(e.getMessage());
+            logger.info("is it here?");
             return null;
         } catch (IllegalArgumentException e) {
             logger.error("Invalid username info : " + e.getMessage());

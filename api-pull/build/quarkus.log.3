@@ -1,42 +1,16 @@
-2024-08-22 19:48:38,531 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 0.690s. Listening on: http://localhost:8080
-2024-08-22 19:48:38,532 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2024-08-22 19:48:38,532 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
-2024-08-22 19:48:38,533 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload total time: 0.707s 
-2024-08-22 19:48:41,807 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [com.mar.ser.GithubUserService] (executor-thread-1) Checkin if -> marcincho exist in DB
-2024-08-22 19:48:42,109 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [com.mar.ser.GithubUserService] (executor-thread-1) Saving MarcinCho to internal DB.
-2024-08-22 19:48:42,143 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /gh/marcincho failed, error id: 76f2762c-3fe9-42db-8de3-30e21938000c-6: jakarta.persistence.EntityExistsException: detached entity passed to persist: com.marcinchowaniec.entity.GithubUser
-	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:126)
-	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:167)
-	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:173)
-	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:763)
-	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741)
-	at io.quarkus.hibernate.orm.runtime.session.TransactionScopedSession.persist(TransactionScopedSession.java:146)
-	at org.hibernate.engine.spi.SessionLazyDelegator.persist(SessionLazyDelegator.java:282)
-	at org.hibernate.Session_OpdLahisOZ9nWRPXMsEFQmQU03A_Synthetic_ClientProxy.persist(Unknown Source)
-	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:105)
-	at io.quarkus.hibernate.orm.panache.common.runtime.AbstractJpaOperations.persist(AbstractJpaOperations.java:100)
-	at io.quarkus.hibernate.orm.panache.PanacheRepositoryBase.persist(PanacheRepositoryBase.java:66)
-	at com.marcinchowaniec.repository.GithubUserRepository_ClientProxy.persist(Unknown Source)
-	at com.marcinchowaniec.service.GithubUserService.saveRepoOwner(GithubUserService.java:24)
-	at com.marcinchowaniec.service.GithubUserService_ClientProxy.saveRepoOwner(Unknown Source)
-	at com.marcinchowaniec.httpClient.GithubHttpClient.getGithubUser(GithubHttpClient.java:55)
-	at com.marcinchowaniec.httpClient.GithubHttpClient_Subclass.getGithubUser$$superforward(Unknown Source)
-	at com.marcinchowaniec.httpClient.GithubHttpClient_Subclass$$function$$15.apply(Unknown Source)
-	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:73)
-	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
-	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:136)
-	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:107)
-	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.doIntercept(TransactionalInterceptorRequired.java:38)
-	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.intercept(TransactionalInterceptorBase.java:61)
-	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.intercept(TransactionalInterceptorRequired.java:32)
-	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired_Bean.intercept(Unknown Source)
-	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
-	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
-	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
-	at com.marcinchowaniec.httpClient.GithubHttpClient_Subclass.getGithubUser(Unknown Source)
-	at com.marcinchowaniec.httpClient.GithubHttpClient_ClientProxy.getGithubUser(Unknown Source)
-	at com.marcinchowaniec.controller.GithubApi.getUsernameResponse(GithubApi.java:35)
-	at com.marcinchowaniec.controller.GithubApi$quarkusrestinvoker$getUsernameResponse_6bcdd3c66a2d1afe7d6afcb9a2ca4395606eac38.invoke(Unknown Source)
+2024-08-27 11:39:37,448 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 1.376s. Listening on: http://localhost:8080
+2024-08-27 11:39:37,450 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2024-08-27 11:39:37,450 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
+2024-08-27 11:39:37,451 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload total time: 1.494s 
+2024-08-27 11:39:42,822 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 1.076s. Listening on: http://localhost:8081
+2024-08-27 11:39:42,824 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) Profile test activated. 
+2024-08-27 11:39:42,825 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
+2024-08-27 11:39:42,883 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo single GET method invoked.
+2024-08-27 11:39:42,886 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /repo/single/api-micro failed, error id: 54cb52fc-ee74-4f32-ae37-b6abf10b40a3-7: java.lang.NullPointerException: Cannot invoke "io.quarkus.hibernate.orm.panache.PanacheQuery.firstResultOptional()" because the return value of "com.marcinchowaniec.repository.RepoRepository.find(String, Object[])" is null
+	at com.marcinchowaniec.service.RepoService.singleRepo(RepoService.java:59)
+	at com.marcinchowaniec.service.RepoService_ClientProxy.singleRepo(Unknown Source)
+	at com.marcinchowaniec.controller.RepoController.getSingleRepoByName(RepoController.java:52)
+	at com.marcinchowaniec.controller.RepoController$quarkusrestinvoker$getSingleRepoByName_8eed33b05a92a4f419af89f5029208e435b8bb08.invoke(Unknown Source)
 	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
 	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
 	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
@@ -48,35 +22,224 @@
 	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: org.hibernate.PersistentObjectException: detached entity passed to persist: com.marcinchowaniec.entity.GithubUser
-	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:88)
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77)
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54)
-	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
-	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757)
-	... 39 more
 
-2024-08-22 19:52:56,470 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) ';' expected, line 24 in /home/marcin/docs/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/GithubUserService.java
-2024-08-22 19:52:56,472 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) not a statement, line 24 in /home/marcin/docs/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/GithubUserService.java
-2024-08-22 19:52:56,472 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) ';' expected, line 24 in /home/marcin/docs/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/GithubUserService.java
-2024-08-22 19:52:56,520 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) ';' expected, line 24 in /home/marcin/docs/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/GithubUserService.java
-2024-08-22 19:52:56,521 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) not a statement, line 24 in /home/marcin/docs/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/GithubUserService.java
-2024-08-22 19:52:56,522 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) ';' expected, line 24 in /home/marcin/docs/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/GithubUserService.java
-2024-08-22 19:53:52,787 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.quarkus] (Test runner thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 0.836s. Listening on: http://localhost:8081
-2024-08-22 19:53:52,791 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.quarkus] (Test runner thread) Profile test activated. 
-2024-08-22 19:53:52,794 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.quarkus] (Test runner thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, vertx]
-2024-08-22 19:53:52,939 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.quarkus] (Test runner thread) api-pull(test application) stopped in 0.008s
-2024-08-22 19:53:52,943 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.test] (Test runner thread) [39m==================== TEST REPORT #5[39m ====================
-2024-08-22 19:53:52,944 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.test] (Test runner thread) [91mTest GreetingResourceTest#testHelloEndpoint() failed 
+2024-08-27 11:39:42,900 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo DELETE by id method invoked.
+2024-08-27 11:39:42,932 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) api-pull(test application) stopped in 0.017s
+2024-08-27 11:39:42,935 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m==================== TEST REPORT #7[39m ====================
+2024-08-27 11:39:42,936 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [91mTest RepoControllerTest#testGetSingleRepoByName() failed 
 [39m: java.lang.AssertionError: 1 expectation failed.
-Expected status code <200> but was <404>.
+Expected status code <200> but was <500>.
 
 	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
-	at com.marcinchowaniec.GreetingResourceTest.testHelloEndpoint(GreetingResourceTest.java:16)
+	at com.marcinchowaniec.controller.RepoControllerTest.testGetSingleRepoByName(RepoControllerTest.java:29)
+	Suppressed: java.lang.NullPointerException: Cannot invoke "io.quarkus.hibernate.orm.panache.PanacheQuery.firstResultOptional()" because the return value of "com.marcinchowaniec.repository.RepoRepository.find(String, Object[])" is null
+		at com.marcinchowaniec.service.RepoService.singleRepo(RepoService.java:59)
+		at com.marcinchowaniec.service.RepoService_ClientProxy.singleRepo(Unknown Source)
+		at com.marcinchowaniec.controller.RepoController.getSingleRepoByName(RepoController.java:52)
+		at com.marcinchowaniec.controller.RepoController$quarkusrestinvoker$getSingleRepoByName_8eed33b05a92a4f419af89f5029208e435b8bb08.invoke(Unknown Source)
+		at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+		at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+		at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+		at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+		at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+		at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+		at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+		at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+		at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
 
-2024-08-22 19:53:52,945 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91mSummary:[39m <<<<<<<<<<<<<<<<<<<<
-com.marcinchowaniec.GreetingResourceTest#testHelloEndpoint(GreetingResourceTest.java:16) [91mGreetingResourceTest#testHelloEndpoint()[39m 1 expectation failed.
-Expected status code <200> but was <404>.
-2024-08-22 19:53:52,945 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91m1 TEST FAILED[39m <<<<<<<<<<<<<<<<<<<<
-2024-08-22 19:53:54,073 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-16) Restarting quarkus due to changes in GithubUserService.class.
-2024-08-22 19:53:54,080 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[564225] INFO  [io.quarkus] (Quarkus Main Thread) api-pull stopped in 0.005s
+2024-08-27 11:39:42,937 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [91mTest RepoControllerTest#testDeleteRepoById() failed 
+[39m: java.lang.AssertionError: 1 expectation failed.
+Expected status code <202> but was <200>.
+
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at com.marcinchowaniec.controller.RepoControllerTest.testDeleteRepoById(RepoControllerTest.java:19)
+
+2024-08-27 11:39:42,937 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91mSummary:[39m <<<<<<<<<<<<<<<<<<<<
+com.marcinchowaniec.controller.RepoControllerTest#testGetSingleRepoByName(RepoControllerTest.java:29) [91mRepoControllerTest#testGetSingleRepoByName()[39m 1 expectation failed.
+Expected status code <200> but was <500>.
+com.marcinchowaniec.controller.RepoControllerTest#testDeleteRepoById(RepoControllerTest.java:19) [91mRepoControllerTest#testDeleteRepoById()[39m 1 expectation failed.
+Expected status code <202> but was <200>.
+2024-08-27 11:39:42,938 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91m2 TESTS FAILED[39m <<<<<<<<<<<<<<<<<<<<
+2024-08-27 11:41:17,691 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 0.989s. Listening on: http://localhost:8081
+2024-08-27 11:41:17,693 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) Profile test activated. 
+2024-08-27 11:41:17,694 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
+2024-08-27 11:41:17,746 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo single GET method invoked.
+2024-08-27 11:41:17,749 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /repo/single/api-micro failed, error id: 54cb52fc-ee74-4f32-ae37-b6abf10b40a3-8: java.lang.NullPointerException: Cannot invoke "io.quarkus.hibernate.orm.panache.PanacheQuery.firstResultOptional()" because the return value of "com.marcinchowaniec.repository.RepoRepository.find(String, Object[])" is null
+	at com.marcinchowaniec.service.RepoService.singleRepo(RepoService.java:59)
+	at com.marcinchowaniec.service.RepoService_ClientProxy.singleRepo(Unknown Source)
+	at com.marcinchowaniec.controller.RepoController.getSingleRepoByName(RepoController.java:52)
+	at com.marcinchowaniec.controller.RepoController$quarkusrestinvoker$getSingleRepoByName_8eed33b05a92a4f419af89f5029208e435b8bb08.invoke(Unknown Source)
+	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-27 11:41:17,761 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo DELETE by id method invoked.
+2024-08-27 11:41:17,790 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) api-pull(test application) stopped in 0.014s
+2024-08-27 11:41:17,794 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m==================== TEST REPORT #8[39m ====================
+2024-08-27 11:41:17,795 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [91mTest RepoControllerTest#testGetSingleRepoByName() failed 
+[39m: java.lang.AssertionError: 1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at com.marcinchowaniec.controller.RepoControllerTest.testGetSingleRepoByName(RepoControllerTest.java:29)
+	Suppressed: java.lang.NullPointerException: Cannot invoke "io.quarkus.hibernate.orm.panache.PanacheQuery.firstResultOptional()" because the return value of "com.marcinchowaniec.repository.RepoRepository.find(String, Object[])" is null
+		at com.marcinchowaniec.service.RepoService.singleRepo(RepoService.java:59)
+		at com.marcinchowaniec.service.RepoService_ClientProxy.singleRepo(Unknown Source)
+		at com.marcinchowaniec.controller.RepoController.getSingleRepoByName(RepoController.java:52)
+		at com.marcinchowaniec.controller.RepoController$quarkusrestinvoker$getSingleRepoByName_8eed33b05a92a4f419af89f5029208e435b8bb08.invoke(Unknown Source)
+		at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+		at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+		at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+		at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+		at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+		at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+		at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+		at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+		at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-27 11:41:17,795 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [91mTest RepoControllerTest#testDeleteRepoById() failed 
+[39m: java.lang.AssertionError: 1 expectation failed.
+Expected status code <202> but was <200>.
+
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at com.marcinchowaniec.controller.RepoControllerTest.testDeleteRepoById(RepoControllerTest.java:19)
+
+2024-08-27 11:41:17,796 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91mSummary:[39m <<<<<<<<<<<<<<<<<<<<
+com.marcinchowaniec.controller.RepoControllerTest#testGetSingleRepoByName(RepoControllerTest.java:29) [91mRepoControllerTest#testGetSingleRepoByName()[39m 1 expectation failed.
+Expected status code <200> but was <500>.
+com.marcinchowaniec.controller.RepoControllerTest#testDeleteRepoById(RepoControllerTest.java:19) [91mRepoControllerTest#testDeleteRepoById()[39m 1 expectation failed.
+Expected status code <202> but was <200>.
+2024-08-27 11:41:17,796 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91m2 TESTS FAILED[39m <<<<<<<<<<<<<<<<<<<<
+2024-08-27 11:52:47,626 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 1.217s. Listening on: http://localhost:8081
+2024-08-27 11:52:47,629 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) Profile test activated. 
+2024-08-27 11:52:47,632 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
+2024-08-27 11:52:47,693 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo single GET method invoked.
+2024-08-27 11:52:47,696 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /repo/single/api-micro failed, error id: 54cb52fc-ee74-4f32-ae37-b6abf10b40a3-9: java.lang.NullPointerException: Cannot invoke "io.quarkus.hibernate.orm.panache.PanacheQuery.firstResultOptional()" because the return value of "com.marcinchowaniec.repository.RepoRepository.find(String, Object[])" is null
+	at com.marcinchowaniec.service.RepoService.singleRepo(RepoService.java:59)
+	at com.marcinchowaniec.service.RepoService_ClientProxy.singleRepo(Unknown Source)
+	at com.marcinchowaniec.controller.RepoController.getSingleRepoByName(RepoController.java:52)
+	at com.marcinchowaniec.controller.RepoController$quarkusrestinvoker$getSingleRepoByName_8eed33b05a92a4f419af89f5029208e435b8bb08.invoke(Unknown Source)
+	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-27 11:52:47,711 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo DELETE by id method invoked.
+2024-08-27 11:52:47,736 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) api-pull(test application) stopped in 0.014s
+2024-08-27 11:52:47,740 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m==================== TEST REPORT #9[39m ====================
+2024-08-27 11:52:47,741 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [91mTest RepoControllerTest#testGetSingleRepoByName() failed 
+[39m: java.lang.AssertionError: 1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at com.marcinchowaniec.controller.RepoControllerTest.testGetSingleRepoByName(RepoControllerTest.java:29)
+	Suppressed: java.lang.NullPointerException: Cannot invoke "io.quarkus.hibernate.orm.panache.PanacheQuery.firstResultOptional()" because the return value of "com.marcinchowaniec.repository.RepoRepository.find(String, Object[])" is null
+		at com.marcinchowaniec.service.RepoService.singleRepo(RepoService.java:59)
+		at com.marcinchowaniec.service.RepoService_ClientProxy.singleRepo(Unknown Source)
+		at com.marcinchowaniec.controller.RepoController.getSingleRepoByName(RepoController.java:52)
+		at com.marcinchowaniec.controller.RepoController$quarkusrestinvoker$getSingleRepoByName_8eed33b05a92a4f419af89f5029208e435b8bb08.invoke(Unknown Source)
+		at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+		at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+		at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+		at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+		at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+		at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+		at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+		at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+		at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-27 11:52:47,741 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [91mTest RepoControllerTest#testDeleteRepoById() failed 
+[39m: java.lang.AssertionError: 1 expectation failed.
+Expected status code <202> but was <200>.
+
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at com.marcinchowaniec.controller.RepoControllerTest.testDeleteRepoById(RepoControllerTest.java:19)
+
+2024-08-27 11:52:47,742 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91mSummary:[39m <<<<<<<<<<<<<<<<<<<<
+com.marcinchowaniec.controller.RepoControllerTest#testGetSingleRepoByName(RepoControllerTest.java:29) [91mRepoControllerTest#testGetSingleRepoByName()[39m 1 expectation failed.
+Expected status code <200> but was <500>.
+com.marcinchowaniec.controller.RepoControllerTest#testDeleteRepoById(RepoControllerTest.java:19) [91mRepoControllerTest#testDeleteRepoById()[39m 1 expectation failed.
+Expected status code <202> but was <200>.
+2024-08-27 11:52:47,742 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91m2 TESTS FAILED[39m <<<<<<<<<<<<<<<<<<<<
+2024-08-27 11:52:48,866 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 1.108s. Listening on: http://localhost:8081
+2024-08-27 11:52:48,868 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) Profile test activated. 
+2024-08-27 11:52:48,869 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
+2024-08-27 11:52:48,919 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo single GET method invoked.
+2024-08-27 11:52:48,922 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /repo/single/api-micro failed, error id: 54cb52fc-ee74-4f32-ae37-b6abf10b40a3-10: java.lang.NullPointerException: Cannot invoke "io.quarkus.hibernate.orm.panache.PanacheQuery.firstResultOptional()" because the return value of "com.marcinchowaniec.repository.RepoRepository.find(String, Object[])" is null
+	at com.marcinchowaniec.service.RepoService.singleRepo(RepoService.java:59)
+	at com.marcinchowaniec.service.RepoService_ClientProxy.singleRepo(Unknown Source)
+	at com.marcinchowaniec.controller.RepoController.getSingleRepoByName(RepoController.java:52)
+	at com.marcinchowaniec.controller.RepoController$quarkusrestinvoker$getSingleRepoByName_8eed33b05a92a4f419af89f5029208e435b8bb08.invoke(Unknown Source)
+	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-27 11:52:48,936 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo DELETE by id method invoked.
+2024-08-27 11:52:48,966 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Test runner thread) api-pull(test application) stopped in 0.012s
+2024-08-27 11:52:48,970 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m==================== TEST REPORT #10[39m ====================
+2024-08-27 11:52:48,971 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [91mTest RepoControllerTest#testGetSingleRepoByName() failed 
+[39m: java.lang.AssertionError: 1 expectation failed.
+Expected status code <200> but was <500>.
+
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at com.marcinchowaniec.controller.RepoControllerTest.testGetSingleRepoByName(RepoControllerTest.java:29)
+	Suppressed: java.lang.NullPointerException: Cannot invoke "io.quarkus.hibernate.orm.panache.PanacheQuery.firstResultOptional()" because the return value of "com.marcinchowaniec.repository.RepoRepository.find(String, Object[])" is null
+		at com.marcinchowaniec.service.RepoService.singleRepo(RepoService.java:59)
+		at com.marcinchowaniec.service.RepoService_ClientProxy.singleRepo(Unknown Source)
+		at com.marcinchowaniec.controller.RepoController.getSingleRepoByName(RepoController.java:52)
+		at com.marcinchowaniec.controller.RepoController$quarkusrestinvoker$getSingleRepoByName_8eed33b05a92a4f419af89f5029208e435b8bb08.invoke(Unknown Source)
+		at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+		at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+		at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+		at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+		at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+		at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+		at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+		at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+		at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-27 11:52:48,972 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [91mTest RepoControllerTest#testDeleteRepoById() failed 
+[39m: java.lang.AssertionError: 1 expectation failed.
+Expected status code <202> but was <200>.
+
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at com.marcinchowaniec.controller.RepoControllerTest.testDeleteRepoById(RepoControllerTest.java:19)
+
+2024-08-27 11:52:48,973 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91mSummary:[39m <<<<<<<<<<<<<<<<<<<<
+com.marcinchowaniec.controller.RepoControllerTest#testGetSingleRepoByName(RepoControllerTest.java:29) [91mRepoControllerTest#testGetSingleRepoByName()[39m 1 expectation failed.
+Expected status code <200> but was <500>.
+com.marcinchowaniec.controller.RepoControllerTest#testDeleteRepoById(RepoControllerTest.java:19) [91mRepoControllerTest#testDeleteRepoById()[39m 1 expectation failed.
+Expected status code <202> but was <200>.
+2024-08-27 11:52:48,973 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] ERROR [io.qua.test] (Test runner thread) [39m>>>>>>>>>>>>>>>>>>>> [91m2 TESTS FAILED[39m <<<<<<<<<<<<<<<<<<<<
+2024-08-27 11:53:18,529 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1066389] INFO  [io.quarkus] (Shutdown thread) api-pull stopped in 0.017s
