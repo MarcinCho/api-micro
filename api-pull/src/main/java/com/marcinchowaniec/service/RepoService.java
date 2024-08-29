@@ -2,13 +2,20 @@ package com.marcinchowaniec.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.marcinchowaniec.entity.Branch;
 import com.marcinchowaniec.entity.Repo;
 import com.marcinchowaniec.exceptions.UserNotFoundException;
 import com.marcinchowaniec.httpClient.GithubHttpClient;
+import com.marcinchowaniec.repository.BranchRepository;
 import com.marcinchowaniec.repository.RepoRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -21,6 +28,9 @@ public class RepoService {
 
     @Inject
     RepoRepository repoRepository;
+
+    @Inject
+    BranchRepository branchRepository;
 
     @Inject
     GithubHttpClient githubHttpClient;
@@ -46,7 +56,7 @@ public class RepoService {
         repoRepository.persist(userRepo);
     }
 
-    public List<Repo> listReposFromClient(String username) throws NotFoundException {
+    public List<Repo> listRepos(String username) throws NotFoundException {
         logger.info("Checking if user " + username + " has any repos in internal DB");
         List<Repo> repos = repoRepository.reposByLogin(username).orElseThrow(NotFoundException::new);
         try {
@@ -57,7 +67,7 @@ public class RepoService {
             } else {
                 return repos;
             }
-        } catch (UserNotFoundException e) {
+        } catch (UserNotFoundException | NullPointerException e) {
             throw new NotFoundException();
         }
     }
@@ -85,4 +95,41 @@ public class RepoService {
         return repoRepository.findById(id);
     }
 
+    public List<Branch> getRepositoryBranches(String reponame, String username) {
+        return githubHttpClient.getRepoBranches(reponame, username);
+    }
+
+    public List<Branch> getAllUserBranches(String username) {
+        List<Repo> repos = listRepos(username);
+        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            List<Future<List<Branch>>> futureBranches = repos.stream()
+                    .map(repo -> executor.submit(() -> getRepositoryBranches(repo.name, username)))
+                    .collect(Collectors.toList());
+
+            return futureBranches.stream().flatMap(futu -> {
+                try {
+                    return futu.get().stream();
+                } catch (InterruptedException | ExecutionException ex) {
+                    return null;
+                }
+            })
+                    .collect(Collectors.toList());
+
+        }
+
+    }
+
+    @Transactional
+    public List<Branch> getAndSaveBranches(String username) {
+        List<Branch> branches = getAllUserBranches(username);
+        try {
+            logger.info("Saving branches to db");
+            branches.forEach(branch -> branchRepository.persist(branch));
+            return branches;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return branches;
+        }
+
+    }
 }

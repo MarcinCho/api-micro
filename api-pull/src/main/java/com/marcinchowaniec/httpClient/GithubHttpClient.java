@@ -45,7 +45,7 @@ public class GithubHttpClient {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             logger.info("Pulling " + username + " from github");
-            if (response.statusCode() == 404) {
+            if (response.statusCode() == 403) {
                 logger.info("User not found in GH API " + username);
                 throw new UserNotFoundException("User not Found in Github api.");
             }
@@ -98,8 +98,8 @@ public class GithubHttpClient {
         try {
             HttpRequest request = HttpRequest.newBuilder(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-            if (response.statusCode() == 404) {
-                logger.info("User not found in GH API " + username);
+            if ((response.statusCode() == 404) || (response.statusCode() == 403)) {
+                logger.info("User not found in GH API " + username + " code " + response.statusCode());
                 throw new UserNotFoundException("User not Found in Github api.");
             }
             ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
@@ -109,7 +109,6 @@ public class GithubHttpClient {
             return userRepos;
         } catch (IOException | InterruptedException e) {
             logger.error(e.getMessage());
-            logger.info("is it here?");
             return null;
         } catch (IllegalArgumentException e) {
             logger.error("Invalid username info : " + e.getMessage());
@@ -120,26 +119,36 @@ public class GithubHttpClient {
     public List<Branch> getRepoBranches(String reponame, String username) throws NotFoundException {
         logger.info("Accessing branch information for " + reponame + " of user " + username);
         String url = "https://api.github.com/repos/%s/%s/branches".formatted(username, reponame);
-        logger.info("url = " + url);
         HttpClient client = HttpClient.newBuilder().build();
         try {
             HttpRequest request = HttpRequest.newBuilder(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-            if (response.statusCode() == 404) {
-                logger.error("Branches not found in " + reponame);
-                throw new NotFoundException();
+            switch (response.statusCode()) {
+                case 404 -> {
+                    logger.error("Branches not found in " + reponame);
+                    throw new NotFoundException();
+                }
+                case 403 -> {
+                    logger.error("We wre forbidden to access " + reponame);
+                    throw new NotFoundException();
+                }
+                default -> {
+                    logger.info("Default case proceeding with branches");
+                }
+
             }
+
             ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
             JsonNode jsonNode = mapper.readTree(response.body());
-            String sha = jsonNode.get(1).get("commit").get("sha").asText();
-            logger.info("Json node gives this one" + sha);
-            List<Branch> branch = StreamSupport.stream(jsonNode.spliterator(), true)
+            String sha = jsonNode.get(0).get("commit").get("sha").asText();
+            logger.info("Json node gives this one " + sha);
+            List<Branch> branch = StreamSupport.stream(jsonNode.spliterator(), false)
                     .map(node -> BranchMapper.branchToEnityMapper(node, reponame, username))
                     .collect(Collectors.toList());
             return branch;
-
         } catch (IOException | InterruptedException e) {
+            logger.error(e.getMessage());
             return null;
         }
     }

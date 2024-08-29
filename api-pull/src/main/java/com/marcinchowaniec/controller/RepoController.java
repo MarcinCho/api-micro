@@ -36,6 +36,7 @@ public class RepoController {
     @Inject
     RepoService repoService;
 
+    // Just for test
     @Inject
     GithubHttpClient githubHttpClient;
 
@@ -47,7 +48,7 @@ public class RepoController {
     public Response getUserWithRepos(@PathParam("username") String username) {
         try {
             logger.info("Repo GET method invoked.");
-            List<Repo> repos = repoService.listReposFromClient(username);
+            List<Repo> repos = repoService.listRepos(username);
             if (repos.isEmpty()) {
                 return Response
                         .ok(new RepoListDto("No repositories found for " + username, null),
@@ -122,20 +123,14 @@ public class RepoController {
     @Produces("application/json")
     @Path("/login/{login}")
     public Response deleteRepoByLogin(@PathParam("login") String login) throws NotFoundException {
-        logger.info("-------------- Repo DELETE by login method invoked. --------------");
-        logger.info("Deleting repos for user: " + login);
         Long deleted = repoService.deleteRepoByLogin(login);
         logger.info("Deleted " + deleted + " repos for user: " + login);
         if (deleted > 0) {
-            logger.info("Deleted repos for user: " + login + " accepted");
-            logger.info("------------------------------------------------------------------");
             return Response
                     .accepted(
                             new InfoResponseDto(202, deleted + " repos of user " + login, new Date()))
                     .build();
         }
-        logger.info("Deleted repos for user: " + login + " not found");
-        logger.info("------------------------------------------------------------------");
         return Response
                 .ok(new InfoResponseDto(404,
                         "Repos for user " + login + " was NOT deleted from internal db. \n Was not found in DB",
@@ -160,11 +155,11 @@ public class RepoController {
         return null;
     }
 
+    // test get
     @GET
     @Path("/branch/{username}/{repo}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getBranchesForUserRepo(@PathParam("username") String username, @PathParam("repo") String repo)
-            throws NotFoundException {
+    public Response getBranchesForUserRepo(@PathParam("username") String username, @PathParam("repo") String repo) {
         try {
             logger.info("Branch GET method invoked.");
             List<Branch> branches = githubHttpClient.getRepoBranches(repo, username);
@@ -177,5 +172,22 @@ public class RepoController {
                     .build();
         }
 
+    }
+
+    @GET
+    @Path("/branches/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllReposBranches(@PathParam("username") String username) {
+        try {
+            List<Branch> branches = repoService.getAllUserBranches(username);
+            return Response.status(200)
+                    .entity(branches).build();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return Response.status(404)
+                    .entity(new InfoResponseDto(404, "Branches for username " + " not found." + e.getMessage(),
+                            new Date()))
+                    .build();
+        }
     }
 }
