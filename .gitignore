@@ -3,3 +3,8 @@ api-pull/src/main/resources/application.properties
 /.idea
 /.vscode
 todo.md
+commitNotes.md
+
+/api-pull/logs
+
+quarkus.log*

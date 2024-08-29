@@ -58,7 +58,6 @@ public class RepoService {
                 return repos;
             }
         } catch (UserNotFoundException e) {
-            // return Optional.of(new ArrayList<>());
             throw new NotFoundException();
         }
     }

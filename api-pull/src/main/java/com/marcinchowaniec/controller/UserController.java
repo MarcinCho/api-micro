@@ -1,7 +1,6 @@
 package com.marcinchowaniec.controller;
 
 import java.util.Date;
-import java.util.NoSuchElementException;
 
 import org.jboss.resteasy.reactive.RestResponse;
 import org.jboss.resteasy.reactive.RestResponse.ResponseBuilder;
@@ -19,11 +18,13 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/user")
 public class UserController {
@@ -36,35 +37,36 @@ public class UserController {
     @GET
     @Path("/{username}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUsernameResponse(@PathParam("username") String username) {
+    public Response getUsernameResponse(@PathParam("username") String username) {
         logger.info("User GET method invoked.");
         try {
-            User githubUser = githubUserService.getUserByLogin(username.toLowerCase()).get();
-            return githubUser;
-        } catch (NoSuchElementException e) {
-            return null;
+            User githubUser = githubUserService.getUserByLogin(username.toLowerCase())
+                    .orElseThrow(NotFoundException::new);
+            return Response.status(200).entity(githubUser).build();
+        } catch (NotFoundException | IllegalArgumentException e) {
+            return Response.status(404).entity(new InfoResponseDto(404, username + " not found.", new Date())).build();
         }
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RestResponse<UserDto> postUser(UserDto userDto) {
+    public Response postUser(UserDto userDto) {
         logger.info("User POST method invoked.");
         if (!githubUserService.checkUserByLogin(userDto.login())) {
             githubUserService.getUserByLogin(userDto.login());
         }
-        return ResponseBuilder.ok(userDto, MediaType.APPLICATION_JSON).build();
+        return Response.status(202).entity(userDto).build();
     }
 
     @Transactional
     @DELETE
-    @Path("/{login}")
-    public RestResponse<InfoResponseDto> deleteUser(@PathParam("login") String login) {
+    @Path("/{username}")
+    public RestResponse<InfoResponseDto> deleteUser(@PathParam("username") String username) {
         logger.info("User DELETE method invoked.");
-        Long resp = githubUserService.deleteUser(login);
+        Long resp = githubUserService.deleteUser(username);
         return ResponseBuilder
-                .ok(new InfoResponseDto("Here there is a user id " + resp, new Date()), MediaType.APPLICATION_JSON)
+                .ok(new InfoResponseDto(200, "Here there is a user id " + resp, new Date()), MediaType.APPLICATION_JSON)
                 .build();
     }
 }

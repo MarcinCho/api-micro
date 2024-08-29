@@ -6,12 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.marcinchowaniec.entity.User;
+import com.marcinchowaniec.exceptions.UserNotFoundException;
 import com.marcinchowaniec.httpClient.GithubHttpClient;
 import com.marcinchowaniec.repository.UserRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.NotFoundException;
 
 @ApplicationScoped
 public class UserService {
@@ -30,17 +32,20 @@ public class UserService {
         userRepo.getEntityManager().merge(user);
     }
 
-    public Optional<User> getUserByLogin(String login) {
+    public Optional<User> getUserByLogin(String login) throws NotFoundException {
         Optional<User> user = userRepo.findByLogin(login);
         if (user.isPresent()) {
-
             return user;
-        } else {
+        }
+        try {
             logger.info("Pulling -> " + login + " from Github");
             user = githubHttpClient.getGithubUser(login);
             saveUser(user.get());
             return user;
+        } catch (UserNotFoundException e) {
+            throw new NotFoundException();
         }
+
     }
 
     public boolean checkUserByLogin(String login) {

@@ -1,8 +1,62 @@
-2024-08-27 21:37:31,767 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1134627] INFO  [io.quarkus] (main) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 7.045s. Listening on: http://localhost:8081
-2024-08-27 21:37:31,769 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1134627] INFO  [io.quarkus] (main) Profile test activated. 
-2024-08-27 21:37:31,769 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1134627] INFO  [io.quarkus] (main) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
-2024-08-27 21:37:33,510 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1134627] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo single GET method invoked.
-2024-08-27 21:37:34,184 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1134627] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo DELETE by id method invoked.
-2024-08-27 21:37:34,394 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1134627] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo GET method invoked.
-2024-08-27 21:37:34,396 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1134627] INFO  [com.mar.ser.RepoService] (executor-thread-1) Checking if user marcincho has any repos in internal DB
-2024-08-27 21:37:34,600 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[1134627] INFO  [io.quarkus] (main) api-pull stopped in 0.159s
+2024-08-28 14:10:17,149 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [io.quarkus] (Quarkus Main Thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 1.237s. Listening on: http://localhost:8080
+2024-08-28 14:10:17,149 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2024-08-28 14:10:17,150 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
+2024-08-28 14:10:17,150 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-7) Live reload total time: 1.251s 
+2024-08-28 14:10:17,157 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [com.mar.ser.RepoService] (executor-thread-1) User GET method invoked.
+2024-08-28 14:10:17,171 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [com.mar.ser.UserService] (executor-thread-1) Pulling -> marcinchosssss from Github
+2024-08-28 14:10:17,446 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) Pulling marcinchosssss from github
+2024-08-28 14:10:17,448 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [com.mar.htt.GithubHttpClient] (executor-thread-1) User not found in GH API marcinchosssss
+2024-08-28 14:10:17,452 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /user/marcinchosssss failed, error id: 4efc664c-2a45-460d-88bb-24b8e2641c60-3: com.marcinchowaniec.exceptions.UserNotFoundException: User not Found in Github api.
+	at com.marcinchowaniec.httpClient.GithubHttpClient.getGithubUser(GithubHttpClient.java:45)
+	at com.marcinchowaniec.httpClient.GithubHttpClient_Subclass.getGithubUser$$superforward(Unknown Source)
+	at com.marcinchowaniec.httpClient.GithubHttpClient_Subclass$$function$$7.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:73)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:136)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.invokeInOurTx(TransactionalInterceptorBase.java:107)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.doIntercept(TransactionalInterceptorRequired.java:38)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorBase.intercept(TransactionalInterceptorBase.java:61)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired.intercept(TransactionalInterceptorRequired.java:32)
+	at io.quarkus.narayana.jta.runtime.interceptor.TransactionalInterceptorRequired_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
+	at com.marcinchowaniec.httpClient.GithubHttpClient_Subclass.getGithubUser(Unknown Source)
+	at com.marcinchowaniec.httpClient.GithubHttpClient_ClientProxy.getGithubUser(Unknown Source)
+	at com.marcinchowaniec.service.UserService.getUserByLogin(UserService.java:40)
+	at com.marcinchowaniec.service.UserService_ClientProxy.getUserByLogin(Unknown Source)
+	at com.marcinchowaniec.controller.UserController.getUsernameResponse(UserController.java:43)
+	at com.marcinchowaniec.controller.UserController$quarkusrestinvoker$getUsernameResponse_458c1b36dba3e9f5823405931799e0a31afc9fe6.invoke(Unknown Source)
+	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:141)
+	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$14.runWith(VertxCoreRecorder.java:635)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2516)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2495)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1521)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-08-28 14:12:36,927 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) <identifier> expected, line 42 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:12:36,928 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) '(' or '[' expected, line 43 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:12:36,929 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) 'else' without 'if', line 45 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:12:36,980 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) <identifier> expected, line 42 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:12:36,981 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) '(' or '[' expected, line 43 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:12:36,982 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) 'else' without 'if', line 45 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:14:38,218 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) <identifier> expected, line 42 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:14:38,220 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) '(' or '[' expected, line 43 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:14:38,220 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) 'else' without 'if', line 45 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:14:38,280 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) <identifier> expected, line 42 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:14:38,282 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) '(' or '[' expected, line 43 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:14:38,284 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] ERROR [io.qua.dep.dev.JavaCompilationProvider] (Quarkus Test Watcher - 0) 'else' without 'if', line 45 in /home/marcin/docs/JAVA/api-micro/api-pull/src/main/java/com/marcinchowaniec/service/UserService.java
+2024-08-28 14:17:12,536 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [io.quarkus] (Test runner thread) api-pull 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.13.2) started in 1.788s. Listening on: http://localhost:8081
+2024-08-28 14:17:12,541 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [io.quarkus] (Test runner thread) Profile test activated. 
+2024-08-28 14:17:12,544 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [io.quarkus] (Test runner thread) Installed features: [agroal, cdi, config-yaml, hibernate-orm, hibernate-orm-panache, jdbc-postgresql, narayana-jta, rest, rest-client, rest-client-jackson, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
+2024-08-28 14:17:12,824 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo single GET method invoked.
+2024-08-28 14:17:12,992 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo DELETE by id method invoked.
+2024-08-28 14:17:13,028 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [com.mar.ser.RepoService] (executor-thread-1) Repo GET method invoked.
+2024-08-28 14:17:13,029 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [com.mar.ser.RepoService] (executor-thread-1) Checking if user marcincho has any repos in internal DB
+2024-08-28 14:17:13,078 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [io.quarkus] (Test runner thread) api-pull(test application) stopped in 0.023s
+2024-08-28 14:17:25,854 marcinsasusv /home/marcin/.sdkman/candidates/java/21.0.3-amzn/bin/java[73319] INFO  [io.quarkus] (Shutdown thread) api-pull stopped in 0.021s

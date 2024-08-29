@@ -9,17 +9,22 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.marcinchowaniec.entity.Branch;
 
 import com.marcinchowaniec.entity.User;
 import com.marcinchowaniec.entity.Repo;
 import com.marcinchowaniec.exceptions.UserNotFoundException;
+import com.marcinchowaniec.mapper.BranchMapper;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
@@ -31,7 +36,7 @@ public class GithubHttpClient {
     private static final Logger logger = LoggerFactory.getLogger(GithubHttpClient.class);
 
     @Transactional
-    public Optional<User> getGithubUser(String username) {
+    public Optional<User> getGithubUser(String username) throws UserNotFoundException {
         System.out.println("Wanting to grab " + username);
         String url = String.format("https://api.github.com/users/%s", username);
 
@@ -40,6 +45,10 @@ public class GithubHttpClient {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             logger.info("Pulling " + username + " from github");
+            if (response.statusCode() == 404) {
+                logger.info("User not found in GH API " + username);
+                throw new UserNotFoundException("User not Found in Github api.");
+            }
             var ObjectMapper = new ObjectMapper().configure(
                     DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                     false);
@@ -87,7 +96,7 @@ public class GithubHttpClient {
         String url = String.format("https://api.github.com/users/%s/repos", username);
         HttpClient client = HttpClient.newBuilder().build();
         try {
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
+            HttpRequest request = HttpRequest.newBuilder(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             if (response.statusCode() == 404) {
                 logger.info("User not found in GH API " + username);
@@ -104,6 +113,33 @@ public class GithubHttpClient {
             return null;
         } catch (IllegalArgumentException e) {
             logger.error("Invalid username info : " + e.getMessage());
+            return null;
+        }
+    }
+
+    public List<Branch> getRepoBranches(String reponame, String username) throws NotFoundException {
+        logger.info("Accessing branch information for " + reponame + " of user " + username);
+        String url = "https://api.github.com/repos/%s/%s/branches".formatted(username, reponame);
+        logger.info("url = " + url);
+        HttpClient client = HttpClient.newBuilder().build();
+        try {
+            HttpRequest request = HttpRequest.newBuilder(URI.create(url)).build();
+            HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+            if (response.statusCode() == 404) {
+                logger.error("Branches not found in " + reponame);
+                throw new NotFoundException();
+            }
+            ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
+                    false);
+            JsonNode jsonNode = mapper.readTree(response.body());
+            String sha = jsonNode.get(1).get("commit").get("sha").asText();
+            logger.info("Json node gives this one" + sha);
+            List<Branch> branch = StreamSupport.stream(jsonNode.spliterator(), true)
+                    .map(node -> BranchMapper.branchToEnityMapper(node, reponame, username))
+                    .collect(Collectors.toList());
+            return branch;
+
+        } catch (IOException | InterruptedException e) {
             return null;
         }
     }
