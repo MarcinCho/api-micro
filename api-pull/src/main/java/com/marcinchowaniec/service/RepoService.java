@@ -56,6 +56,10 @@ public class RepoService {
         repoRepository.persist(userRepo);
     }
 
+    public void updateUserRepo(Repo userRepo) {
+        repoRepository.getEntityManager().merge(userRepo);
+    }
+
     public List<Repo> listRepos(String username) throws NotFoundException {
         logger.info("Checking if user " + username + " has any repos in internal DB");
         List<Repo> repos = repoRepository.reposByLogin(username).orElseThrow(NotFoundException::new);

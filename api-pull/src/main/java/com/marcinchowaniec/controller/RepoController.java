@@ -11,7 +11,6 @@ import com.marcinchowaniec.dto.InfoResponseDto;
 import com.marcinchowaniec.dto.RepoListDto;
 import com.marcinchowaniec.entity.Branch;
 import com.marcinchowaniec.entity.Repo;
-import com.marcinchowaniec.httpClient.GithubHttpClient;
 import com.marcinchowaniec.service.RepoService;
 
 import jakarta.inject.Inject;
@@ -35,10 +34,6 @@ public class RepoController {
 
     @Inject
     RepoService repoService;
-
-    // Just for test
-    @Inject
-    GithubHttpClient githubHttpClient;
 
     private static final Logger logger = LoggerFactory.getLogger(RepoService.class);
 
@@ -79,17 +74,17 @@ public class RepoController {
         try {
             logger.info("Repo single GET method invoked.");
             Repo repo = repoService.singleRepo(name).orElseThrow(NotFoundException::new);
-            return Response.ok(new RepoListDto("Repo name: " + name, List.of(repo)), MediaType.APPLICATION_JSON)
-                    .build();
+            return Response.status(200).entity(repo).build();
         } catch (NotFoundException e) {
-            return Response
-                    .ok(new RepoListDto("Repo name: " + name + " not found", null), MediaType.APPLICATION_JSON).build();
+            return Response.status(404)
+                    .entity(new RepoListDto("Repo name: " + name + " not found", null)).build();
         }
 
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response postSingleRepo(Repo repo) throws ResourceException {
         logger.info("Repo POST method invoked.");
         Optional<Repo> db_repo = repoService.singleRepo(repo.name);
@@ -97,6 +92,8 @@ public class RepoController {
             return Response.ok(db_repo.get(), MediaType.APPLICATION_JSON).build();
         } else {
             logger.info("About to create a new single repo");
+            repo.id = (long) (Math.random() * 100000000);
+            repoService.saveUserRepo(repo);
             return Response.ok(repo, MediaType.APPLICATION_JSON).header("created", true).build();
         }
     }
@@ -146,32 +143,15 @@ public class RepoController {
         logger.info("Repo PUT method invoked.");
         Repo db_repo = repoService.findById(repo.id);
         if (db_repo != null) {
-            db_repo.url = repo.url;
-            repoService.saveUserRepo(db_repo);
-            Response.status(200).entity(
+            db_repo = repo;
+            repoService.updateUserRepo(db_repo);
+            return Response.status(200).entity(
                     repo)
                     .build();
         }
-        return null;
-    }
-
-    // test get
-    @GET
-    @Path("/branch/{username}/{repo}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getBranchesForUserRepo(@PathParam("username") String username, @PathParam("repo") String repo) {
-        try {
-            logger.info("Branch GET method invoked.");
-            List<Branch> branches = githubHttpClient.getRepoBranches(repo, username);
-            return Response.status(200).entity(
-                    branches)
-                    .build();
-        } catch (NotFoundException e) {
-            return Response.status(404).entity(
-                    new InfoResponseDto(404, "Repo with name: " + repo + " was not found", new Date()))
-                    .build();
-        }
-
+        return Response.status(404)
+                .entity(new InfoResponseDto(404, "Something went wrong with updating " + repo.name, new Date()))
+                .build();
     }
 
     @GET
@@ -182,7 +162,7 @@ public class RepoController {
             List<Branch> branches = repoService.getAllUserBranches(username);
             return Response.status(200)
                     .entity(branches).build();
-        } catch (Exception e) {
+        } catch (NotFoundException e) {
             logger.error(e.getMessage());
             return Response.status(404)
                     .entity(new InfoResponseDto(404, "Branches for username " + " not found." + e.getMessage(),

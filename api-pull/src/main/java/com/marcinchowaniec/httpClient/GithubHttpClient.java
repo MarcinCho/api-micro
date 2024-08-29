@@ -130,7 +130,7 @@ public class GithubHttpClient {
                 }
                 case 403 -> {
                     logger.error("We wre forbidden to access " + reponame);
-                    throw new NotFoundException();
+                    throw new NotFoundException("Gh api forbidden");
                 }
                 default -> {
                     logger.info("Default case proceeding with branches");
