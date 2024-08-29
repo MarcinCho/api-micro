@@ -6,5 +6,6 @@ todo.md
 commitNotes.md
 
 /api-pull/logs
+/api-pull/build/resources/main/
 
 quarkus.log*
