@@ -22,5 +22,18 @@ quarkus:
       enable: true
       path: logs/a.log
       level: DEBUG
+mp:
+  openapi:
+    extensions:
+      smallrye:
+        info:
+          version: 1.0.0
+          description: Github Api client with Quarkus and DB connection
+          contact:
+            name: Marcin
+            email: github
+          license:
+            name: GNU GPLv3
+            url: https://www.gnu.org/licenses/gpl-3.0.txt
 
 

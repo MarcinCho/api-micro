@@ -29,9 +29,10 @@ public class UserService {
     @Transactional
     public void saveUser(User user) {
         logger.info("Saving " + user.login + " to internal DB.");
-        userRepo.getEntityManager().merge(user);
+        userRepo.persist(user);
     }
 
+    @Transactional
     public Optional<User> getUserByLogin(String login) throws NotFoundException {
         Optional<User> user = userRepo.findByLogin(login);
         if (user.isPresent()) {

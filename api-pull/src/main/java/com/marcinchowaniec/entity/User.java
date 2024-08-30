@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @ApplicationScoped
 @Table(name = "gh_users")
@@ -15,6 +16,7 @@ public class User extends PanacheEntityBase {
     @Id
     public Long id;
     @Column(unique = true)
+    @NotBlank
     public String login;
     public String url;
     public String repos_url;

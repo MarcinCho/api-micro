@@ -1,8 +1,10 @@
 package com.marcinchowaniec.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record UserDto(
-                Long id,
-                String login,
-                String name) {
+        @NotBlank Long id,
+        @NotBlank String login,
+        @NotBlank String name) {
 
 }

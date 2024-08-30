@@ -7,6 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @ApplicationScoped
 @Entity
@@ -15,7 +16,9 @@ public class Repo extends PanacheEntityBase {
 
     @Id
     public Long id;
+    @NotBlank
     public String user_login;
+    @NotBlank
     public String name;
     public String url;
     public Date created_at;
