@@ -16,12 +16,13 @@ quarkus:
     level: INFO
     console:
       enable: true
-      # json:
-      #   pretty-print: true
     file:
       enable: true
       path: logs/a.log
       level: DEBUG
+  container-image:
+    build: true
+    name: apipull
 mp:
   openapi:
     extensions:

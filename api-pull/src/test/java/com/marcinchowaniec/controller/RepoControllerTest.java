@@ -1,6 +1,7 @@
 package com.marcinchowaniec.controller;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,9 +12,6 @@ import io.restassured.response.Response;
 
 @QuarkusTest
 public class RepoControllerTest {
-
-    // @InjectMock
-    // private RepoController repoController;
 
     @Test
     void testDeleteRepoById() {
@@ -83,83 +81,24 @@ public class RepoControllerTest {
     @Test
     void testPostSingleRepo() {
         // Here I'll have to add som json type
-        String reqBody = """
-                {
-                    "id" : 23232323,
-                    "login": "marcincho",
-                    "name": "marcinchso"
-                }
-                """;
+        JSONObject testObject = new JSONObject();
+        testObject.put("user_login", "TestUser");
+        testObject.put("name", "TestRepo");
+        testObject.put("url", "test.url");
 
         Response response = given()
                 .header("Content-type", "application/json")
                 .and()
-                .body(reqBody)
+                .body(testObject.toString())
                 .when()
                 .post("repo")
                 .then()
                 .extract()
                 .response();
 
-        Assertions.assertEquals(201, response.statusCode());
-        Assertions.assertEquals("marcincho", response.jsonPath().getString("login"));
+        Assertions.assertEquals(202, response.statusCode());
+        Assertions.assertEquals("TestUser", response.jsonPath().getString("user_login"));
 
     }
-
-    // @Test
-    // @Disabled
-    // void testPostSingleRepo() {
-    // }
-
-    // @Test
-    // @Disabled
-    // void testUpdateSingleRepo() {
-
-    // }
-
-    // @Mock
-    // private RepoService repoService;
-
-    // @InjectMocks
-    // private RepoController repoController;
-
-    // @BeforeEach
-    // public void setup() {
-    // MockitoAnnotations.openMocks(this);
-    // }
-
-    // @Test
-    // public void testDeleteRepoById_RepoDeleted() {
-    // // Arrange
-    // Long id = 1L;
-    // when(repoService.deleteRepoById(id)).thenReturn(true);
-
-    // // Act
-    // Response response = repoController.deleteRepoById(id);
-
-    // // Assert
-    // Assertions.assertEquals(200, response.getStatus());
-    // InfoResponseDto responseEntity = (InfoResponseDto) response.getEntity();
-    // Assertions.assertEquals(200, responseEntity.status_code());
-    // Assertions.assertEquals("Repo with Id: " + id + " was deleted from internal
-    // db.", responseEntity.info());
-    // }
-
-    // @Test
-    // public void testDeleteRepoById_RepoNotFound() {
-    // // Arrange
-    // Long id = 1L;
-    // when(repoService.deleteRepoById(id)).thenReturn(false);
-
-    // // Act
-    // Response response = repoController.deleteRepoById(id);
-
-    // // Assert
-    // Assertions.assertEquals(418, response.getStatus());
-    // InfoResponseDto responseEntity = (InfoResponseDto) response.getEntity();
-    // Assertions.assertEquals(418, responseEntity.status_code());
-    // Assertions.assertEquals("Repo with Id: " + id + " was deleted from internal
-    // db.", responseEntity.info());
-    // }
 
 }
