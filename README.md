@@ -1,7 +1,7 @@
 # Api-micro
 
-A project that aims to create a couple of microservices with a client app. The goal of the project is to explore microservice architecture and get to know popular frameworks like Spring Boot and Quarkus without any guidance.
-
+A project that aims to create an app with microservices in backend and single page application as a client. The goal of the project is to explore microservice architecture and get to know popular frameworks like Spring Boot and Quarkus without any guidance.
+[The project is still under development]
 ### Api-pull
 
 A Quarkus microservice utilizing the GitHub API to perform CRUD operations on users and repositories.
@@ -79,14 +79,14 @@ For now, refer to the individual projects.
 
 #### Get user
 
-```http
+```
 http://localhost:8080/user/marcincho
 ```
 
 #### Get repo
 
-```http
-  http://localhost:8080/repo/api-micro
+```
+http://localhost:8080/repo/api-micro
 ```
 
 Refer to http://localhost:8080/q/dev-ui/io.quarkus.quarkus-smallrye-openapi/swagger-ui to get all the functions for api-pull.
