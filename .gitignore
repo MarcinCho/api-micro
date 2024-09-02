@@ -9,3 +9,5 @@ commitNotes.md
 /api-pull/build/resources/main/
 
 quarkus.log*
+
+/quarkus
