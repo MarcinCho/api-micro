@@ -99,9 +99,6 @@ I learned how to use Quarkus, the differences between it and Spring Boot, how to
 
 ## Roadmap
 
-- [ ] work on moduel naming.
-- [ ] create docker compose file
-
 ### Api-pull (MS)
 
 - [ ] Add one-to-many relationship users → repos.
@@ -122,6 +119,8 @@ I learned how to use Quarkus, the differences between it and Spring Boot, how to
 - [ ] API gateway
 - [ ] K3s working prototype
 - [ ] E2E testing
+- [ ] work on module naming.
+- [ ] create docker compose file
 
 
 
