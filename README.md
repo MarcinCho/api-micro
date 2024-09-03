@@ -1,7 +1,8 @@
 # Api-micro
 
-A project that aims to create an app with microservices in backend and single page application as a client. The goal of the project is to explore microservice architecture and get to know popular frameworks like Spring Boot and Quarkus without any guidance.
-[The project is still under development]
+A project that aims to create an app with microservices in backend and single page application as a client. 
+The goal of the project is to explore microservice architecture and get to know popular frameworks like Spring Boot and Quarkus without any guidance, as well as practice exception handling, logging and configuration.
+[The project as a whole is still under development]
 ### Api-pull
 
 A Quarkus microservice utilizing the GitHub API to perform CRUD operations on users and repositories.
