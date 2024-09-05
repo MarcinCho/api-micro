@@ -94,7 +94,7 @@ public class GithubHttpClient {
     public List<Repo> getReposFromApi(String username) throws UserNotFoundException {
         logger.info("Pulling repositories as DTOs from Github " + username + " account");
         String url = String.format("https://api.github.com/users/%s/repos", username);
-        HttpClient client = HttpClient.newBuilder().build();
+        HttpClient client = HttpClient.newHttpClient();
         try {
             HttpRequest request = HttpRequest.newBuilder(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());

@@ -55,3 +55,7 @@ nb-configuration.xml
 
 # logs
 quarkus.log*
+
+
+# Private files
+.todo
