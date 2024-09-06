@@ -18,8 +18,8 @@ class ApiClientTest {
     @Test
     @Order(2)
     void testRequestAuthor() {
-        String authorName = "test";
-        String response = ApiClient.requestAuthor(authorName);
+        String authorName = "/authors.json?q=" + "test";
+        String response = ApiClient.requestQuery(authorName);
         assertEquals(true, response.contains("numFound"));
     }
 
@@ -27,15 +27,15 @@ class ApiClientTest {
     @Test
     @Order(2)
     void testRequestTitle() {
-        String title = "Testing";
-        String response = ApiClient.requestTitle(title);
+        String title = ".json?title=" + "Testing";
+        String response = ApiClient.requestQuery(title);
         assertEquals(true, response.contains("isbn"));
     }
 
     @DisplayName("Get String with Custom Query")
     @Test
     void testRequestQuery() {
-        String query = "title=pan+tadeusz&author=adam+mickiewicz";
+        String query = ".json?" + "title=pan+tadeusz&author=adam+mickiewicz";
         String response = ApiClient.requestQuery(query);
         assertEquals(true, response.contains("OL14814249M"));
     }
