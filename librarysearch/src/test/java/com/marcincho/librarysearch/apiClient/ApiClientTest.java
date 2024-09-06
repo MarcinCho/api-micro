@@ -10,10 +10,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ApiClientTest {
 
-    // get the author by name
-    // get book
-    // get multi query
-
     @DisplayName("Get String with Author")
     @Test
     @Order(2)
@@ -38,6 +34,20 @@ class ApiClientTest {
         String query = ".json?" + "title=pan+tadeusz&author=adam+mickiewicz";
         String response = ApiClient.requestQuery(query);
         assertEquals(true, response.contains("OL14814249M"));
+    }
+
+    @Test
+    void testRequestQueryGiberish() {
+        String query = ".json?q=wdvdwadasdcxsaccwda";
+        String response = ApiClient.requestQuery(query);
+        assertEquals(true, response.contains("numFound"));
+    }
+
+    @Test
+    void testRequestQueryShortTimeout() {
+        String query = ".json?q=w";
+        String response = ApiClient.requestQuery(query);
+        assertEquals(true, response.contains("timed out"));
     }
 
 }

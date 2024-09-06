@@ -8,14 +8,20 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Author {
+public class Author extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long authorId;
+    private Long id;
 
-    private String authorName;
+    private String name;
 
-    private String topWork;
+    private String workCount;
+
+    private String key;
+
+    private String birthDate;
+
+    private String deathDate;
 
 }
