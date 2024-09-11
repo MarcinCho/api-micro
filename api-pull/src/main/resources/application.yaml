@@ -23,6 +23,8 @@ quarkus:
   container-image:
     build: true
     name: apipull
+    group: marcincho
+  
 mp:
   openapi:
     extensions:

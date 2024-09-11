@@ -5,7 +5,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Duration;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,13 @@ public class ApiClient {
     private static final String BASE_URL = "https://openlibrary.org/search";
 
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
+
+    public static void keyGrabber(String path) throws IOException {
+        // This function is here just for a sake of exercise
+        List<String> lines = Files.readAllLines(Path.of(path));
+        lines.forEach(System.out::println);
+
+    }
 
     public static String requestQuery(String query) {
         // Note that Query will be handled in service layer

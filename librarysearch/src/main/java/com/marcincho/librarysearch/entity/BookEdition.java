@@ -1,34 +1,33 @@
 package com.marcincho.librarysearch.entity;
 
-import java.util.List;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "book")
-public class Book extends BaseEntity {
+@Table(name = "book_edition")
+public class BookEdition extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
-    private List<BookEdition> editions;
+    private String publisher;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id")
-    private Author author;
+    @Column(name = "number_of_pages")
+    private int numberOfPages;
+
+    private String subjects;
 
 }
