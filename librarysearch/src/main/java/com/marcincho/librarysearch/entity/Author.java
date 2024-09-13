@@ -11,10 +11,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
 @Table(name = "author")
+@EqualsAndHashCode(callSuper = false)
 public class Author extends BaseEntity {
 
     @Id

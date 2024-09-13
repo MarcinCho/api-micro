@@ -6,7 +6,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -116,20 +115,20 @@ public class GithubHttpClient {
         }
     }
 
-    public List<Branch> getRepoBranches(String reponame, String username) throws NotFoundException {
-        logger.info("Accessing branch information for " + reponame + " of user " + username);
-        String url = "https://api.github.com/repos/%s/%s/branches".formatted(username, reponame);
+    public List<Branch> getRepoBranches(Repo repo, User user) throws NotFoundException {
+        logger.info("Accessing branch information for " + repo.name + " of user " + user.login);
+        String url = "https://api.github.com/repos/%s/%s/branches".formatted(user.login, repo.name);
         HttpClient client = HttpClient.newBuilder().build();
         try {
             HttpRequest request = HttpRequest.newBuilder(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             switch (response.statusCode()) {
                 case 404 -> {
-                    logger.error("Branches not found in " + reponame);
+                    logger.error("Branches not found in " + repo.name);
                     throw new NotFoundException();
                 }
                 case 403 -> {
-                    logger.error("We wre forbidden to access " + reponame);
+                    logger.error("We wre forbidden to access " + repo.name);
                     throw new NotFoundException("Gh api forbidden");
                 }
                 default -> {
@@ -144,7 +143,7 @@ public class GithubHttpClient {
             String sha = jsonNode.get(0).get("commit").get("sha").asText();
             logger.info("Json node gives this one " + sha);
             List<Branch> branch = StreamSupport.stream(jsonNode.spliterator(), false)
-                    .map(node -> BranchMapper.branchToEnityMapper(node, reponame, username))
+                    .map(node -> BranchMapper.branchToEntityMapper(node, repo))
                     .collect(Collectors.toList());
             return branch;
         } catch (IOException | InterruptedException e) {

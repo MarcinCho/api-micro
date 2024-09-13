@@ -1,3 +1,19 @@
+CREATE USER library
+WITH
+    PASSWORD 'libraryservice';
+
+DROP DATABASE IF EXISTS libraryms;
+
+DROP TABLE IF EXISTS book_edition;
+
+DROP TABLE IF EXISTS book;
+
+DROP TABLE If EXISTS author;
+
+CREATE DATABASE libraryms
+WITH
+    OWNER library;
+
 DROP TABLE IF EXISTS author;
 
 CREATE TABLE
@@ -65,7 +81,8 @@ CREATE TABLE
         updated_at TIMESTAMP,
         updated_by VARCHAR,
         FOREIGN KEY (book_id) REFERENCES book (id)
-    )
+    );
+
 INSERT INTO
     book_edition (publisher, number_of_pages, subjects, book_id)
 VALUES

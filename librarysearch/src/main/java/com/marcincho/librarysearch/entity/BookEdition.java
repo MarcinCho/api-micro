@@ -9,10 +9,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
 @Table(name = "book_edition")
+@EqualsAndHashCode(callSuper = false)
 public class BookEdition extends BaseEntity {
 
     @Id

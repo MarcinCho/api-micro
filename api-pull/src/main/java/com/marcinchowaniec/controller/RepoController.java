@@ -48,8 +48,7 @@ public class RepoController {
         @APIResponses({
                         @APIResponse(responseCode = "200", description = "Returns list of user repos."),
                         @APIResponse(responseCode = "404", description = "User not found"),
-                        @APIResponse(responseCode = "400", description = "Bad request, most likely some special chars in URI."),
-        })
+                        @APIResponse(responseCode = "400", description = "Bad request, most likely some special chars in URI."), })
         @GET
         @Path("/{username}")
         @Produces(MediaType.APPLICATION_JSON)
@@ -85,8 +84,7 @@ public class RepoController {
         @Operation(summary = "Gets single repo.", description = "Gets single repo by repo name.")
         @APIResponses({
                         @APIResponse(responseCode = "200", description = "Returns user repo."),
-                        @APIResponse(responseCode = "404", description = "Repo not found."),
-        })
+                        @APIResponse(responseCode = "404", description = "Repo not found."), })
         @GET
         @Path("/single/{name}")
         @Produces(MediaType.APPLICATION_JSON)
@@ -105,8 +103,7 @@ public class RepoController {
         @Operation(summary = "Post single repo.", description = "Post single repo.")
         @APIResponses({
                         @APIResponse(responseCode = "200", description = "Returns user repo, that already exist."),
-                        @APIResponse(responseCode = "201", description = "Saves repo and returs it"),
-        })
+                        @APIResponse(responseCode = "201", description = "Saves repo and returs it"), })
         @POST
         @Consumes(MediaType.APPLICATION_JSON)
         @Transactional
@@ -126,8 +123,7 @@ public class RepoController {
         @Operation(summary = "Deletes single repo by id.", description = "Deletes single repo by id.")
         @APIResponses({
                         @APIResponse(responseCode = "200", description = "Deletes user repo, returns id"),
-                        @APIResponse(responseCode = "418", description = "Returns info that repo was not deleted."),
-        })
+                        @APIResponse(responseCode = "418", description = "Returns info that repo was not deleted."), })
         @DELETE
         @Produces("application/json")
         @Path("/id/{id}")
@@ -153,8 +149,7 @@ public class RepoController {
         @Operation(summary = "Deletes repo by username", description = "Deletes repos by username.")
         @APIResponses({
                         @APIResponse(responseCode = "200", description = "Returns number of deleted repos."),
-                        @APIResponse(responseCode = "404", description = "user not found"),
-        })
+                        @APIResponse(responseCode = "404", description = "user not found"), })
         @DELETE
         @Produces("application/json")
         @Path("/login/{login}")
@@ -180,8 +175,7 @@ public class RepoController {
         @Operation(summary = "Updates repo", description = "Updates repo given Repo body.")
         @APIResponses({
                         @APIResponse(responseCode = "200", description = "Updated repo"),
-                        @APIResponse(responseCode = "404", description = "user not found"),
-        })
+                        @APIResponse(responseCode = "404", description = "user not found"), })
         @PUT
         @Consumes("application/json")
         @Produces("application/json")
@@ -205,8 +199,7 @@ public class RepoController {
         @Operation(summary = "Gets all branches for user repos", description = "Gets all branches for user repos")
         @APIResponses({
                         @APIResponse(responseCode = "200", description = "Returns list of branches for all users public repos."),
-                        @APIResponse(responseCode = "404", description = "user not found"),
-        })
+                        @APIResponse(responseCode = "404", description = "user not found"), })
         @GET
         @Path("/branches/{username}")
         @Produces(MediaType.APPLICATION_JSON)

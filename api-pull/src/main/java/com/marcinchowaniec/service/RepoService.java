@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import com.marcinchowaniec.entity.Branch;
 import com.marcinchowaniec.entity.Repo;
+import com.marcinchowaniec.entity.User;
 import com.marcinchowaniec.exceptions.UserNotFoundException;
 import com.marcinchowaniec.httpClient.GithubHttpClient;
 import com.marcinchowaniec.repository.BranchRepository;
@@ -35,6 +36,12 @@ public class RepoService {
     @Inject
     GithubHttpClient githubHttpClient;
 
+    @Inject
+    BranchService branchService;
+
+    @Inject
+    UserService userService;
+
     private static final Logger logger = LoggerFactory.getLogger(RepoService.class);
 
     @Transactional
@@ -44,9 +51,9 @@ public class RepoService {
     }
 
     @Transactional
-    public void saveUserRepo(Repo userRepo, String username) {
+    public void saveUserRepo(Repo userRepo, User user) {
         logger.info("Saving " + userRepo.name + " to internal db");
-        userRepo.user_login = username;
+        userRepo.user = user;
         repoRepository.getEntityManager().merge(userRepo);
     }
 
@@ -62,11 +69,13 @@ public class RepoService {
 
     public List<Repo> listRepos(String username) throws NotFoundException {
         logger.info("Checking if user " + username + " has any repos in internal DB");
-        List<Repo> repos = repoRepository.reposByLogin(username).orElseThrow(NotFoundException::new);
+        // List<Repo> repos = Repo.findByUserId(68085649);
+        List<Repo> repos = repoRepository.reposByUserId(68085649L).orElseThrow(NotFoundException::new);
+        User user = userService.getUserByLogin(username).orElseThrow(NotFoundException::new);
         try {
             if (repos.isEmpty()) {
                 repos = githubHttpClient.getReposFromApi(username);
-                repos.forEach(repo -> saveUserRepo(repo, username));
+                repos.forEach(repo -> saveUserRepo(repo, user));
                 return repos;
             } else {
                 return repos;
@@ -99,15 +108,18 @@ public class RepoService {
         return repoRepository.findById(id);
     }
 
-    public List<Branch> getRepositoryBranches(String reponame, String username) {
-        return githubHttpClient.getRepoBranches(reponame, username);
+    public List<Branch> getRepositoryBranches(Repo repo, User user) {
+        List<Branch> branches = githubHttpClient.getRepoBranches(repo, user);
+        branches.forEach(branch -> branchService.saveBranch(branch, repo));
+        return branches;
     }
 
     public List<Branch> getAllUserBranches(String username) {
+        User user = userService.getUserByLogin(username).orElseThrow(NotFoundException::new);
         List<Repo> repos = listRepos(username);
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
             List<Future<List<Branch>>> futureBranches = repos.stream()
-                    .map(repo -> executor.submit(() -> getRepositoryBranches(repo.name, username)))
+                    .map(repo -> executor.submit(() -> getRepositoryBranches(repo, user)))
                     .collect(Collectors.toList());
 
             return futureBranches.stream().flatMap(futu -> {
@@ -124,8 +136,8 @@ public class RepoService {
     }
 
     @Transactional
-    public List<Branch> getAndSaveBranches(String username) {
-        List<Branch> branches = getAllUserBranches(username);
+    public List<Branch> getAndSaveBranches(User user) {
+        List<Branch> branches = getAllUserBranches(user.login);
         try {
             logger.info("Saving branches to db");
             branches.forEach(branch -> branchRepository.persist(branch));
