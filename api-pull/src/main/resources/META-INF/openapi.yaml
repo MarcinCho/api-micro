@@ -1,0 +1,236 @@
+openapi: 3.0.3
+info:
+  title: api-pull API
+  description: Github Api client with Quarkus and DB connection
+  contact:
+    name: Marcin
+    email: marcin@apipull.com
+  license:
+    name: GNU GPLv3
+    url: https://www.gnu.org/licenses/gpl-3.0.txt
+  version: 1.0.0
+tags:
+  - name: Github repo controller
+    description: CRUD operations on repos as well as getting branches.
+  - name: Github user controller
+    description: "Get, Post, Delete operations API for requested users. "
+paths:
+  /repo:
+    put:
+      tags:
+        - Github repo controller
+      summary: Updates repo
+      description: Updates repo given Repo body.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Repo"
+      responses:
+        "200":
+          description: Updated repo
+        "404":
+          description: user not found
+    post:
+      tags:
+        - Github repo controller
+      summary: Post single repo.
+      description: Post single repo.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Repo"
+      responses:
+        "200":
+          description: "Returns user repo, that already exist."
+        "201":
+          description: Saves repo and returs it
+  /repo/branches/{username}:
+    get:
+      tags:
+        - Github repo controller
+      summary: Gets all branches for user repos
+      description: Gets all branches for user repos
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns list of branches for all users public repos.
+        "404":
+          description: user not found
+  /repo/id/{id}:
+    delete:
+      tags:
+        - Github repo controller
+      summary: Deletes single repo by id.
+      description: Deletes single repo by id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        "200":
+          description: "Deletes user repo, returns id"
+        "418":
+          description: Returns info that repo was not deleted.
+  /repo/login/{login}:
+    delete:
+      tags:
+        - Github repo controller
+      summary: Deletes repo by username
+      description: Deletes repos by username.
+      parameters:
+        - name: login
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns number of deleted repos.
+        "404":
+          description: user not found
+  /repo/single/{name}:
+    get:
+      tags:
+        - Github repo controller
+      summary: Gets single repo.
+      description: Gets single repo by repo name.
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns user repo.
+        "404":
+          description: Repo not found.
+  /repo/{username}:
+    get:
+      tags:
+        - Github repo controller
+      summary: Gets repos
+      description: Gets all the repos for given username.
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns list of user repos.
+        "404":
+          description: User not found
+        "400":
+          description: "Bad request, most likely some special chars in URI."
+  /user:
+    post:
+      tags:
+        - Github user controller
+      summary: Post GH user
+      description: Post GH user to internal DB
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserDto"
+      responses:
+        "202":
+          description: Returns user found in DB.
+        "201":
+          description: Saves user and returns it
+        "404":
+          description: User not found
+        "400":
+          description: Indicates issue with post body
+  /user/{username}:
+    get:
+      tags:
+        - Github user controller
+      summary: Gets GH user
+      description: Requests GH user from internal DB or GH API
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns user.
+        "404":
+          description: User not found
+    delete:
+      tags:
+        - Github user controller
+      summary: Delete GH user
+      description: Delete GH user from internal DB
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns deleted User Id.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoResponseDto"
+components:
+  schemas:
+    Date:
+      format: date
+      type: string
+      example: 2022-03-10
+    InfoResponseDto:
+      type: object
+      properties:
+        status_code:
+          format: int32
+          type: integer
+        info:
+          type: string
+        time:
+          $ref: "#/components/schemas/Date"
+    Repo:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        created_at:
+          $ref: "#/components/schemas/Date"
+        updated_at:
+          $ref: "#/components/schemas/Date"
+    UserDto:
+      required:
+        - login
+        - name
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        login:
+          pattern: \S
+          type: string
+        name:
+          pattern: \S
+          type: string

@@ -40,10 +40,14 @@ public class ApiClient {
             HttpResponse<String> response = HTTP_CLIENT
                     .send(request, HttpResponse.BodyHandlers
                             .ofString());
+            logger.info(response.body());
             return switch (response.statusCode()) {
-                case 200 -> response.body();
-                case 404 -> response.body();
-                default -> " ";
+                case 200 ->
+                    response.body();
+                case 404 ->
+                    response.body();
+                default ->
+                    " ";
             };
 
         } catch (IOException | InterruptedException e) {

@@ -23,12 +23,12 @@ public class QueryCreatorTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    void testCustom() {
-        String query = "pan_tadeusz";
-        String expeccted = "search.json?q=pan+tadeusz&limit=5&fields=title,author_key,publish_year,subtitle,seed,language";
+    // void testCustom() {
+    // String query = "pan_tadeusz";
+    // String expeccted =
+    // "search.json?q=pan+tadeusz&limit=5&fields=title,author_key,publish_year,subtitle,seed,language";
 
-    }
+    // }
 
     @Test
     void testSubject() {

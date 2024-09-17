@@ -70,8 +70,8 @@ public class RepoService {
     public List<Repo> listRepos(String username) throws NotFoundException {
         logger.info("Checking if user " + username + " has any repos in internal DB");
         // List<Repo> repos = Repo.findByUserId(68085649);
-        List<Repo> repos = repoRepository.reposByUserId(68085649L).orElseThrow(NotFoundException::new);
         User user = userService.getUserByLogin(username).orElseThrow(NotFoundException::new);
+        List<Repo> repos = repoRepository.reposByUserId(user.id).orElseThrow(NotFoundException::new);
         try {
             if (repos.isEmpty()) {
                 repos = githubHttpClient.getReposFromApi(username);

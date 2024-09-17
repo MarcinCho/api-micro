@@ -11,15 +11,19 @@ public class QueryCreator {
 
     private static final String LIMIT = "&limit=5";
 
+    public static String queryPlus(String query) {
+        return query.replace(' ', '+');
+    }
+
     public static String title(String query) {
-        logger.info("Converting " + query + " to title query.");
-        return LIMIT;
+        logger.info("Converting " + queryPlus(query) + " to title query.");
+        return "/title.json?q=" + queryPlus(query) + LIMIT;
     }
 
     public static String author(String query) {
-        logger.info("Converting " + query + " to author query.");
+        logger.info("Converting " + queryPlus(query) + " to author query.");
         String fields = "&" + "fields=name,work_count,birth_date,death_date,key";
-        return "/authors.json?q=" + query + LIMIT + fields;
+        return "/authors.json?q=" + queryPlus(query) + LIMIT + fields;
     }
 
     public static String custom(CustomQueryDTO query) {

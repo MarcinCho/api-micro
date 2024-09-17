@@ -36,9 +36,7 @@ public class GithubHttpClient {
 
     @Transactional
     public Optional<User> getGithubUser(String username) throws UserNotFoundException {
-        System.out.println("Wanting to grab " + username);
         String url = String.format("https://api.github.com/users/%s", username);
-
         HttpClient client = HttpClient.newBuilder().build();
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
@@ -54,11 +52,10 @@ public class GithubHttpClient {
             User repoOwner = ObjectMapper.readValue(response.body(), User.class);
             return Optional.of(repoOwner);
         } catch (IOException | InterruptedException e) {
-            System.err.println("Are we catching this ??? " + e.getMessage());
-            return null;
+            return Optional.empty();
         } catch (NotFoundException e) {
             logger.error("Not found in Github API!");
-            return null;
+            return Optional.empty();
         }
     }
 
