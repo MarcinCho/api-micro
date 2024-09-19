@@ -3,6 +3,7 @@ package com.marcincho.librarysearch.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.marcincho.librarysearch.DTOs.ResponseDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,18 +17,18 @@ import com.marcincho.librarysearch.service.IAuthorService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("library/")
+@RequestMapping(path = "author/", produces = "application/json", consumes = "application/json")
 @AllArgsConstructor
-public class LibraryController {
+public class AuthorController {
 
     IAuthorService authorService;
 
-    @GetMapping("author")
+    @GetMapping()
     public ResponseEntity<Optional<Author>> getAuthor(@RequestParam String name) {
         return ResponseEntity.ok(authorService.fetchAuthor(name));
     }
 
-    @GetMapping("author/all")
+    @GetMapping("all")
     public ResponseEntity<List<Author>> getAuthors() {
         List<Author> authors = authorService.fetchAuthors();
         if (authors.isEmpty()) {
@@ -37,9 +38,8 @@ public class LibraryController {
         }
     }
 
-    @SuppressWarnings("rawtypes")
     @DeleteMapping()
-    public ResponseEntity deleteAuthor(@RequestParam Long id) {
+    public ResponseEntity<ResponseDTO> deleteAuthor(@RequestParam Long id) {
         authorService.deleteAuthor(id);
         return ResponseEntity.accepted().build();
     }

@@ -3,7 +3,7 @@ package com.marcincho.librarysearch.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.marcincho.librarysearch.DTOs.AuthorDto;
+import com.marcincho.librarysearch.DTOs.AuthorDTO;
 import com.marcincho.librarysearch.entity.Author;
 
 public interface IAuthorService {
@@ -14,8 +14,8 @@ public interface IAuthorService {
 
     void deleteAuthor(Long id);
 
-    boolean updateAuthor(AuthorDto author);
+    boolean updateAuthor(AuthorDTO author);
 
-    Author createAuthor(AuthorDto author);
+    Author createAuthor(AuthorDTO author);
 
 }

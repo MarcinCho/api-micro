@@ -1,5 +1,5 @@
 package com.marcincho.librarysearch.DTOs;
 
-public record AuthorDto() {
+public record AuthorDTO() {
 
 }

@@ -4,7 +4,7 @@ quarkus:
     username: apipull
     password: apipullservice
     jdbc:
-      # url: jdbc:postgresql://192.168.33.15:5434/apipull
+#      url: jdbc:postgresql://192.168.33.15:5434/apipull
       url: jdbc:postgresql://localhost:5434/apipull
   hibernate-orm:
     # database:

@@ -13,7 +13,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.marcincho.librarysearch.DTOs.AuthorDto;
+import com.marcincho.librarysearch.DTOs.AuthorDTO;
 import com.marcincho.librarysearch.Utils.QueryCreator;
 import com.marcincho.librarysearch.apiClient.ApiClient;
 import com.marcincho.librarysearch.entity.Author;
@@ -66,13 +66,13 @@ public class AuthorServiceImpl implements IAuthorService {
     }
 
     @Override
-    public boolean updateAuthor(AuthorDto author) {
+    public boolean updateAuthor(AuthorDTO author) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateAuthor'");
     }
 
     @Override
-    public Author createAuthor(AuthorDto author) {
+    public Author createAuthor(AuthorDTO author) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'createAuthor'");
     }

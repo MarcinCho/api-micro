@@ -1,4 +1,4 @@
-# Api-micro
+# Api-Proxy
 
 A project that aims to create an app with microservices in backend and single page application as a client. 
 The goal of the project is to explore microservice architecture and get to know popular frameworks like Spring Boot and Quarkus without any guidance, as well as practice exception handling, logging and configuration.
