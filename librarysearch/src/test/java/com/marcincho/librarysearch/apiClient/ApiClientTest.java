@@ -1,11 +1,11 @@
 package com.marcincho.librarysearch.apiClient;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.marcincho.librarysearch.DTOs.CustomQueryDTO;
+import com.marcincho.librarysearch.Utils.QueryCreator;
+import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -16,40 +16,63 @@ class ApiClientTest {
     @Test
     @Order(2)
     void testRequestAuthor() {
-        String authorName = "/authors.json?q=" + "test";
-        String response = ApiClient.requestQuery(authorName);
-        assertEquals(true, response.contains("numFound"));
+        String authorName = "mickiewicz";
+        String response = ApiClient.requestQuery(QueryCreator.author(authorName));
+        assertTrue(response.contains("numFound"));
     }
 
     @DisplayName("Get String with title")
     @Test
     @Order(2)
     void testRequestTitle() {
-        String title = ".json?title=" + "Testing";
-        String response = ApiClient.requestQuery(title);
-        assertEquals(true, response.contains("isbn"));
+        String title = "Testing";
+        String response = ApiClient.requestQuery(QueryCreator.title(title));
+        assertTrue(response.contains("isbn"));
     }
 
     @DisplayName("Get String with Custom Query")
     @Test
     void testRequestQuery() {
-        String query = ".json?" + "title=pan+tadeusz&author=adam+mickiewicz";
-        String response = ApiClient.requestQuery(query);
-        assertEquals(true, response.contains("OL14814249M"));
+        CustomQueryDTO query = new CustomQueryDTO("Blackout", "Adam Mickiewicz", "Ending", "Someone");
+        String response = ApiClient.requestQuery(QueryCreator.custom(query));
+        assertTrue(response.contains("OL14814249M"));
     }
 
     @Test
     void testRequestQueryGiberish() {
-        String query = ".json?q=wdvdwadasdcxsaccwda";
-        String response = ApiClient.requestQuery(query);
-        assertEquals(true, response.contains("numFound"));
+        String query = "wdvdwadasdcxsaccwda";
+        String response = ApiClient.requestQuery(QueryCreator.anyField(query));
+        assertTrue(response.contains("numFound"));
     }
 
     @Test
     void testRequestQueryShortTimeout() {
-        String query = ".json?q=w";
-        String response = ApiClient.requestQuery(query);
-        assertEquals(true, response.contains("timed out"));
+        String query = "w";
+        String response = ApiClient.requestQuery(QueryCreator.anyField(query));
+        assertTrue(response.contains("timed out"));
+    }
+
+    @Test
+    @DisplayName("Test works with key")
+    void requestByKeyWorks() {
+
+        String key = "works/OL14914265W";
+        JsonNode response = ApiClient.requestByKey(key);
+        assert response != null;
+        String actual = response.get("title").toString();
+        assertTrue(actual.contains("Blackout"));
+
+    }
+
+    @Test
+    @DisplayName("Author with key")
+    void requestByKeyAuthor() {
+        String key = "authors/OL114808A";
+        JsonNode response = ApiClient.requestByKey(key);
+        assert response != null;
+        String actual = response.get("name").toString();
+        assertTrue(actual.contains("Adam Mickiewicz"));
+
     }
 
     // @Test
