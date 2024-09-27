@@ -1,5 +1,6 @@
 package com.marcincho.librarysearch.apiClient;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -33,9 +34,17 @@ class ApiClientTest {
     @DisplayName("Get String with Custom Query")
     @Test
     void testRequestQuery() {
-        CustomQueryDTO query = new CustomQueryDTO("Blackout", "Adam Mickiewicz", "Ending", "Someone");
+        CustomQueryDTO query = new CustomQueryDTO("Blackout", "Willis", "Fiction");
         String response = ApiClient.requestQuery(QueryCreator.custom(query));
-        assertTrue(response.contains("OL14814249M"));
+        assertTrue(response.contains("OL32214255M"));
+    }
+
+    @DisplayName("Get String with Custom Query")
+    @Test
+    void testRequestQueryFalse() {
+        CustomQueryDTO query = new CustomQueryDTO("Blackout", "Adam Mickiewicz", "Fiction");
+        String response = ApiClient.requestQuery(QueryCreator.custom(query));
+        assertFalse(response.contains("OL14814249M"));
     }
 
     @Test
@@ -57,10 +66,9 @@ class ApiClientTest {
     void requestByKeyWorks() {
 
         String key = "works/OL14914265W";
-        JsonNode response = ApiClient.requestByKey(key);
+        String response = ApiClient.requestByKey(key);
         assert response != null;
-        String actual = response.get("title").toString();
-        assertTrue(actual.contains("Blackout"));
+        assertTrue(response.contains("Blackout"));
 
     }
 
@@ -68,10 +76,9 @@ class ApiClientTest {
     @DisplayName("Author with key")
     void requestByKeyAuthor() {
         String key = "authors/OL114808A";
-        JsonNode response = ApiClient.requestByKey(key);
+        String response = ApiClient.requestByKey(key);
         assert response != null;
-        String actual = response.get("name").toString();
-        assertTrue(actual.contains("Adam Mickiewicz"));
+        assertTrue(response.contains("Adam Mickiewicz"));
 
     }
 

@@ -20,12 +20,6 @@ public class ApiClient {
 
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
 
-//    public static void keyGrabber(String path) throws IOException {
-//        // This function is here just for a sake of exercise
-//        List<String> lines = Files.readAllLines(Path.of(path));
-//        lines.forEach(System.out::println);
-//
-//    }
 
     public static String requestQuery(String query) {
         // Note that Query will be handled in service layer
@@ -52,14 +46,14 @@ public class ApiClient {
         }
     }
 
-    public static JsonNode requestByKey(String key) {
+    public static String requestByKey(String key) {
         logger.info("Getting info for book with {} from OpenLibrary", key);
-        URI url = URI.create(BASE_URL  + key + ".json");
-        ObjectMapper mapper = new ObjectMapper();
+        URI url = URI.create(BASE_URL + "works/"  + key + ".json"); // Not pretty but works
         try {
+            logger.info("Requesting {}", url.toString());
             HttpRequest request = HttpRequest.newBuilder(url).GET().build();
             HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
-            return mapper.readTree(response.body());
+            return response.body();
         } catch (IOException | InterruptedException e) {
             logger.error(e.getMessage());
             return null;

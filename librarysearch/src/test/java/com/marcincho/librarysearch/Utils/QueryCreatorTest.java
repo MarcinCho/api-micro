@@ -43,8 +43,8 @@ public class QueryCreatorTest {
 
     @Test
     void custom() {
-        CustomQueryDTO query = new CustomQueryDTO("Blackout", "Adam Mickiewicz", "Ending", "Someone");
-        String expected = "search.json?title=Blackout&author=Adam+Mickiewicz&subject=Ending&person=Someone&limit=5";
+        CustomQueryDTO query = new CustomQueryDTO("Blackout", "Adam Mickiewicz", "Ending");
+        String expected = "search.json?title=Blackout&author=Adam+Mickiewicz&subject=Ending&limit=5";
         assertEquals(expected, QueryCreator.custom(query));
     }
 
